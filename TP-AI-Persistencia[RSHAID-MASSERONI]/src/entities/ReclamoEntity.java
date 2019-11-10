@@ -29,7 +29,7 @@ public class ReclamoEntity {
 	private UnidadEntity unidad;
 	@Column(name="estado")
 	private String estado;
-	@Transient
+	@OneToMany
 	private List<ImagenEntity> imagenes;
 	
 	public ReclamoEntity() {}
@@ -43,12 +43,6 @@ public class ReclamoEntity {
 		this.unidad = unidad;
 		this.estado = estado;
 		imagenes = new ArrayList<ImagenEntity>();
-	}
-
-	public void agregarImagen(String direccion, String tipo) {
-		ImagenEntity imagen = new ImagenEntity(direccion, tipo, numero);
-		imagenes.add(imagen);
-		imagen.save(numero);
 	}
 	
 	public int getNumero() {

@@ -2,6 +2,7 @@ package daos;
 import org.hibernate.classic.Session;
 
 import entities.*;
+import exceptions.ReclamoException;
 import hibernate.HibernateUtil;
 import modelo.Imagen;
 import modelo.Reclamo;
@@ -9,9 +10,11 @@ import modelo.Reclamo;
 
 public class ImagenDAO {
 	
-	public void save(Imagen imagen) {
-		ImagenEntity save = toEntity(imagen);
-		save.setNumero(imagen.getNumero());
+	public void save(Imagen imagen, int numReclamo) throws ReclamoException {
+		Reclamo r = new ReclamoDAO().buscarReclamo(numReclamo);
+		ImagenEntity save = toEntity(imagen, r);
+		System.out.println(save.getDireccion());
+		System.out.println(r.getDescripcion());
 		Session s = HibernateUtil.getSessionFactory().openSession();
 		s.beginTransaction();
 		s.save(save);
@@ -38,12 +41,12 @@ public class ImagenDAO {
 		s.close();
 	}*/
 	
-	public ImagenEntity toEntity(Imagen i) {
-		return new ImagenEntity(i.getDireccion(), i.getTipo(), i.getIdReclamo());
+	public ImagenEntity toEntity(Imagen i, Reclamo r) {
+		return new ImagenEntity(i.getDireccion(), i.getTipo(), new ReclamoDAO().toEntity(r));
 	}
 	
 	public Imagen toNegocio(ImagenEntity ie) {
-		return new Imagen(ie.getDireccion(), ie.getTipo(), ie.getIdReclamo());
+		return new Imagen(ie.getDireccion(), ie.getTipo());
 	}
 
 

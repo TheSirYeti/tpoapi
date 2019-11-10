@@ -5,6 +5,8 @@ import java.util.List;
 
 import daos.PersonaDAO;
 import daos.ReclamoDAO;
+import exceptions.ReclamoException;
+import views.ImagenView;
 import views.ReclamoView;
 
 public class Reclamo {
@@ -28,10 +30,10 @@ public class Reclamo {
 		imagenes = new ArrayList<Imagen>();
 	}
 
-	public void agregarImagen(String direccion, String tipo) {
-		Imagen imagen = new Imagen(direccion, tipo, numero);
+	public void agregarImagen(String direccion, String tipo) throws ReclamoException {
+		Imagen imagen = new Imagen(direccion, tipo);
 		imagenes.add(imagen);
-		imagen.save(imagen);
+		imagen.save(imagen, numero);
 	}
 	
 	public int getNumero() {
@@ -83,6 +85,10 @@ public class Reclamo {
 	}
 	
 	public ReclamoView toView() {
-		return new  ReclamoView(numero, usuario, edificio, ubicación, descripcion, unidad);
+		List<ImagenView> iv = new ArrayList<ImagenView>();
+		for(Imagen i : imagenes) {
+			iv.add(i.toView());
+		}
+		return new  ReclamoView(numero, usuario, edificio, ubicación, descripcion, unidad, iv);
 	}
 }

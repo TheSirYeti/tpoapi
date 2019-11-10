@@ -3,6 +3,7 @@ package views;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.ReclamoException;
 import modelo.Edificio;
 import modelo.Imagen;
 import modelo.Persona;
@@ -19,7 +20,7 @@ public class ReclamoView {
 	private String estado;
 	private List<ImagenView> imagenes;
 	
-	public ReclamoView(int numero, Persona usuario, Edificio edificio, String ubicación, String descripcion, Unidad unidad) {
+	public ReclamoView(int numero, Persona usuario, Edificio edificio, String ubicación, String descripcion, Unidad unidad, List<ImagenView> imagenes) {
 		this.numero  = numero;
 		this.usuario = usuario.toView();
 		this.edificio = edificio.toView();
@@ -27,13 +28,13 @@ public class ReclamoView {
 		this.descripcion = descripcion;
 		this.unidad = unidad.toView();
 		this.estado = "Nuevo";
-		imagenes = new ArrayList<ImagenView>();
+		this.imagenes = imagenes;
 	}
 
-	public void agregarImagen(String direccion, String tipo) {
-		Imagen imagen = new Imagen(direccion, tipo, numero);
+	public void agregarImagen(String direccion, String tipo) throws ReclamoException {
+		Imagen imagen = new Imagen(direccion, tipo);
 		imagenes.add(imagen.toView());
-		imagen.save(imagen);
+		imagen.save(imagen, numero);
 	}
 	
 	public int getNumero() {

@@ -255,8 +255,10 @@ private static Controlador instancia;
 		if (reclamo == null) {
 			System.out.println("No existe el reclamo");
 		} else {
-			Imagen imagen = new Imagen(direccion, tipo, numero);
-			imagen.save(imagen);
+			Imagen imagen = new Imagen(direccion, tipo);
+			reclamo.agregarImagen(direccion, tipo);
+			//reclamo.update(reclamo);
+			imagen.save(imagen, numero);
 			System.out.println("SE AGREGO LA SIGUIENTE DIRECCION: " +  direccion);
 		}
 	}

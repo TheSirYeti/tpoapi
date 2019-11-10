@@ -1,6 +1,7 @@
 package modelo;
 
 import daos.ImagenDAO;
+import exceptions.ReclamoException;
 import views.ImagenView;
 
 public class Imagen {
@@ -8,16 +9,10 @@ public class Imagen {
 	private int numero;
 	private String direccion;
 	private String tipo;
-	private int idReclamo;
 	
-	public Imagen(String direccion, String tipo, int idReclamo) {
+	public Imagen(String direccion, String tipo) {
 		this.direccion = direccion;
 		this.tipo = tipo;
-		this.idReclamo = idReclamo;
-	}
-	
-	public int getIdReclamo() {
-		return idReclamo;
 	}
 	
 	public int getNumero() {
@@ -44,8 +39,8 @@ public class Imagen {
 		this.tipo = tipo;
 	}
 
-	public void save(Imagen imagen) {
-		new ImagenDAO().save(imagen);
+	public void save(Imagen imagen, int numReclamo) throws ReclamoException {
+		new ImagenDAO().save(imagen, numReclamo);
 	}
 	
 	public ImagenView toView() {

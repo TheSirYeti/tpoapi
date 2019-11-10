@@ -15,18 +15,11 @@ public class ImagenEntity {
 	private String direccion;
 	@Column(name="tipo")
 	private String tipo;
+	@ManyToOne
 	@JoinColumn(name="idReclamo")
-	private int idReclamo;
-	
-	public int getIdReclamo() {
-		return idReclamo;
-	}
+	private ReclamoEntity idReclamo;
 
-	public void setIdReclamo(int idReclamo) {
-		this.idReclamo = idReclamo;
-	}
-
-	public ImagenEntity(String direccion, String tipo, int idReclamo) {
+	public ImagenEntity(String direccion, String tipo, ReclamoEntity idReclamo) {
 		this.direccion = direccion;
 		this.tipo = tipo;
 		this.idReclamo = idReclamo;
@@ -54,13 +47,5 @@ public class ImagenEntity {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-
-	public void save(int numeroReclamo) {
-		
-	}
-	
-	public ImagenView toView() {
-		return new ImagenView(numero, direccion, tipo);
 	}
 }
