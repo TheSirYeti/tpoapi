@@ -26,31 +26,15 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/TP-AI-Persistencia[RSHAID-MASSERONI]"/>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/antlr-2.7.6.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-collections-3.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-logging-1.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/dnsns.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/dom4j-1.6.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/ejb3-persistence.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
@@ -86,11 +70,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jta-1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jtds-1.2.5.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
