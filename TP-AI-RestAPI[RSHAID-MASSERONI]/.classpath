@@ -26,90 +26,26 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/TP-AI-Persistencia[RSHAID-MASSERONI]"/>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/dnsns.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/ejb3-persistence.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/hibernate3.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/hibernate-annotations.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/hibernate-commons-annotations.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jaccess.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/javassist-3.4.GA.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jfxrt.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jtds-1.2.5.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/localedata.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/nashorn.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunec.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunjce_provider.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunmscapi.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunpkcs11.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/zipfs.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/dnsns.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/jaccess.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/jfxrt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/jtds-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/localedata.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/nashorn.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/sunec.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/sunjce_provider.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/sunmscapi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/sunpkcs11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/Interactivas/lib/zipfs.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

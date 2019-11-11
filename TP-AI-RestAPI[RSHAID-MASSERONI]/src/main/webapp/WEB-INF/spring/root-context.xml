@@ -13,5 +13,4 @@
     	<property name="fileType" value="2"/>
    		<property name="bufferSize" value="100000"/>
 	</bean>
-		
 </beans>

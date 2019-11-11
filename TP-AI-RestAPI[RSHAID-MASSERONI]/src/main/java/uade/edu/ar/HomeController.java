@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.*;
+import java.io.File;
 //import java.awt.PageAttributes.MediaType;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +27,7 @@ import javax.servlet.ServletContext;
 
 import controlador.Controlador;
 import exceptions.*;
+import uade.edu.ftpconnection.FTPConnection;
 import views.*;
 
 
@@ -60,7 +62,12 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
+		
+		
 		model.addAttribute("serverTime", formattedDate );
+		
+		File file = new File("C:\\Users\\JP\\Pictures\\sans.png");
+		new FTPConnection().uploadFile(file);
 		
 		return "home";
 	}
