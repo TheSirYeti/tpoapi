@@ -64,11 +64,7 @@ public class HomeController {
 		
 		
 		
-		model.addAttribute("serverTime", formattedDate );
-		
-		File file = new File("C:\\Users\\JP\\Pictures\\sans.png");
-		new FTPConnection().uploadFile(file);
-		
+		model.addAttribute("serverTime", formattedDate );		
 		return "home";
 	}
 	
@@ -335,6 +331,8 @@ public class HomeController {
 												@RequestParam(value="tipo", required=true) String tipo) throws JsonProcessingException {
 		try {
 			Controlador.getInstancia().agregarImagenAReclamo(numero, direccion, tipo);
+			File file = new File("F:\\Users\\Juampi\\Pictures\\" + direccion + "." + tipo);
+			new FTPConnection().uploadFile(file);
 			
 		} catch (ReclamoException e) {
 			e.getMessage();

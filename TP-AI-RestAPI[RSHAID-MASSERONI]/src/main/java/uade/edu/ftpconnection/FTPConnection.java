@@ -16,26 +16,26 @@ import org.apache.commons.net.ftp.FTPReply;
 
 public class FTPConnection {
 
-	private static FTPClient ftpclient;
-	private static String ftpLocation = "C:\\Users\\JP\\Pictures";
-	private static String formatoImagen = ".png";
+	private static FTPClient cliente;
+	private static String carpeta = "F:\\Users\\Juampi\\Pictures\\API";
+	private static String formato = ".png";
 	
 	public static FTPClient getConnection() throws SocketException {
-		if (ftpclient == null) {
-			ftpclient = new FTPClient();
+		if (cliente == null) {
+			cliente = new FTPClient();
 			try {
-				ftpclient.connect("127.0.0.1", 21);
-				ftpclient.login("yeti", "");
+				cliente.connect("127.0.0.1", 21);
+				cliente.login("yeti", "");
 				
-				showServerReply(ftpclient);
-				int replyCode = ftpclient.getReplyCode();
-				//Si el server falla
+				showServerReply(cliente);
+				int replyCode = cliente.getReplyCode();
+
 				if(!FTPReply.isPositiveCompletion(replyCode)) {
 					System.out.println("ERROR FTP: failed operation" + replyCode);
 				} else {
-		            ftpclient.enterLocalPassiveMode();
+		            cliente.enterLocalPassiveMode();
 		            try {
-						ftpclient.setFileType(FTP.BINARY_FILE_TYPE);
+						cliente.setFileType(FTP.BINARY_FILE_TYPE);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -45,7 +45,7 @@ public class FTPConnection {
 				System.out.println("Failed to connect to server");
 			}
 		}
-		return ftpclient;
+		return cliente;
 	}
 	
 	public static List<String> uploadFileList(List<File> images) {
@@ -54,7 +54,7 @@ public class FTPConnection {
 		if (images.isEmpty())
 			return directions;
 		
-		if (ftpclient == null) {
+		if (cliente == null) {
 			try {
 				getConnection();		
 			} catch (SocketException e) {
@@ -78,7 +78,7 @@ public class FTPConnection {
 				inputStream = new FileInputStream(file);
 				boolean uploaded = false;
 				try {
-					uploaded = ftpclient.storeFile(fileFtpName, inputStream);
+					uploaded = cliente.storeFile(fileFtpName, inputStream);
 				} catch (IOException e) {
 					System.out.println("Error saving file");
 					e.printStackTrace();
@@ -96,7 +96,7 @@ public class FTPConnection {
 				}
 			}
 			
-			String fileLocation = new String(ftpLocation + "\\" + fileFtpName);
+			String fileLocation = new String(carpeta + "\\" + fileFtpName);
 			directions.add(fileLocation);
 		}
 		
@@ -105,7 +105,7 @@ public class FTPConnection {
 	
 	public static String uploadFile(File file) {
 		
-		if (ftpclient == null) {
+		if (cliente == null) {
 			try {
 				getConnection();		
 			} catch (SocketException e) {
@@ -128,7 +128,7 @@ public class FTPConnection {
 				inputStream = new FileInputStream(file);
 				boolean uploaded = false;
 				try {
-					uploaded = ftpclient.storeFile(fileFtpName + formatoImagen, inputStream);
+					uploaded = cliente.storeFile(fileFtpName + formato, inputStream);
 				} catch (IOException e) {
 					System.out.println("Error saving file.");
 					e.printStackTrace();
@@ -146,7 +146,7 @@ public class FTPConnection {
 				}
 			}
 			
-		String fileLocation= new String(ftpLocation + "\\" + fileFtpName + formatoImagen);
+		String fileLocation= new String(carpeta + "\\" + fileFtpName + formato);
 		System.out.println(fileLocation);
 		return fileLocation;
 	}
