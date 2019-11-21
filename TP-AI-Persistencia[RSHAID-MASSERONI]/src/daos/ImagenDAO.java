@@ -1,4 +1,7 @@
 package daos;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.classic.Session;
 
 import entities.*;
@@ -9,6 +12,19 @@ import modelo.Reclamo;
 
 
 public class ImagenDAO {
+	
+	public List<Imagen> buscarImagenes(int idReclamo){
+		List<Imagen> resultado = new ArrayList<Imagen>();
+		Session s = HibernateUtil.getSessionFactory().openSession();
+		List<ImagenEntity> i = new ArrayList<ImagenEntity>();
+		i = s.createQuery("FROM ImagenEntity").list();
+		for(ImagenEntity ie : i) {
+			if(idReclamo == ie.getIdReclamo()) {
+				resultado.add(toNegocio(ie));
+			}
+		}
+		return resultado;
+	}
 	
 	public void save(Imagen imagen, int numReclamo) throws ReclamoException {
 		Reclamo r = new ReclamoDAO().buscarReclamo(numReclamo);

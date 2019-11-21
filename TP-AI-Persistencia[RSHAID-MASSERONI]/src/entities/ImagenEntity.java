@@ -19,6 +19,8 @@ public class ImagenEntity {
 	@JoinColumn(name="idReclamo")
 	private ReclamoEntity idReclamo;
 
+	public ImagenEntity() {}
+	
 	public ImagenEntity(String direccion, String tipo, ReclamoEntity idReclamo) {
 		this.direccion = direccion;
 		this.tipo = tipo;
@@ -39,6 +41,14 @@ public class ImagenEntity {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public int getIdReclamo() {
+		return idReclamo.getNumero();
+	}
+
+	public void setIdReclamo(int idReclamo) {
+		this.idReclamo.setNumero(idReclamo);
 	}
 
 	public String getTipo() {

@@ -211,6 +211,8 @@ private static Controlador instancia;
 		List<ReclamoView> resultado = new ArrayList<ReclamoView>();
 		List<Reclamo> res = new ReclamoDAO().buscarReclamosPorEdificio(codigo);
 		for(Reclamo r : res) {
+			List<Imagen> imagenes = new ImagenDAO().buscarImagenes(r.getNumero());
+			r.setImagenes(imagenes);
 			resultado.add(r.toView());
 		}
 		return resultado;
@@ -220,6 +222,8 @@ private static Controlador instancia;
 		List<ReclamoView> res = new ArrayList<ReclamoView>();
 		List<Reclamo> resultado = new ReclamoDAO().buscarReclamosPorUnidad(codigo, piso, numero);
 		for(Reclamo r : resultado) {
+			List<Imagen> imagenes = new ImagenDAO().buscarImagenes(r.getNumero());
+			r.setImagenes(imagenes);
 			res.add(r.toView());
 		}
 		return res;
@@ -228,6 +232,8 @@ private static Controlador instancia;
 	public ReclamoView reclamosPorNumero(int numero) throws ReclamoException {
 		ReclamoView resultado;
 		Reclamo res = buscarReclamo(numero);
+		List<Imagen> imagenes = new ImagenDAO().buscarImagenes(res.getNumero());
+		res.setImagenes(imagenes);
 		resultado = res.toView();
 		return resultado;
 	}
@@ -236,6 +242,8 @@ private static Controlador instancia;
 		List<ReclamoView> resultado = new ArrayList<ReclamoView>();
 		List<Reclamo> res = new ReclamoDAO().buscarReclamosPorPersona(documento);
 		for(Reclamo r  : res) {
+			List<Imagen> imagenes = new ImagenDAO().buscarImagenes(r.getNumero());
+			r.setImagenes(imagenes);
 			resultado.add(r.toView());
 		}
 		return resultado;

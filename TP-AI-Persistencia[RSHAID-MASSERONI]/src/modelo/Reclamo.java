@@ -36,6 +36,10 @@ public class Reclamo {
 		imagen.save(imagen, numero);
 	}
 	
+	public void setImagenes(List<Imagen> imagenes) {
+		this.imagenes = imagenes;
+	}
+
 	public int getNumero() {
 		return numero;
 	}
