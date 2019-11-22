@@ -1,7 +1,7 @@
 import './bootstrap.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Dropdown from 'react-bootstrap/Dropdown'
 function MenúAgregar(){
     ReactDOM.render(
             <div>
@@ -106,29 +106,39 @@ function MenúBuscar(){
 class MainPage extends React.Component{
     render(){
         return(     
-            <body>
+            <div>
                 <div className="encabezado">
                     <h1 className="text-center">Sistema Administrador de Edificios, Personas y Reclamos</h1>
                     <div className="row">
-                        <div className="col col-md-1 md-offset-4 dropdown">
-                            <button type="button" className="btn btn-primary dropdown-toggle" onClick={MenúAgregar}>
-                            Agregar
-                            </button>
-                            <div class="dropdown-menu">
-                                <a className="dropdown-item" href="#">Link 1</a>
-                                <a className="dropdown-item" href="#">Link 2</a>
-                                <a className="dropdown-item" href="#">Link 3</a>
-                            </div>
+                        <div className="col col-md-2">
+                            <Dropdown>
+                                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                                        Agregar
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item onClick={MenúAgregar}>Persona</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenúAgregar}>Inquilino</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenúAgregar}>Dueño</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenúAgregar}>Edificio</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenúAgregar}>Unidad</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>                        
                         </div>
-                        <div className="col col-md-1 dropdown">
-                            <button type="button" className="btn btn-primary dropdown-toggle" onClick={MenúBuscar}>
-                            Buscar
-                            </button>
-                            <div class="dropdown-menu">
-                                <a className="dropdown-item" href="#">Link 1</a>
-                                <a className="dropdown-item" href="#">Link 2</a>
-                                <a className="dropdown-item" href="#">Link 3</a>
-                            </div>
+                        <div className="col col-md-2">
+                            <Dropdown>
+                                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                                    Buscar
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={MenúBuscar}>Persona</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenúBuscar}>Inquilino</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenúBuscar}>Dueño</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenúBuscar}>Edificio</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenúBuscar}>Unidad</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </div>
                     </div>
 
@@ -141,11 +151,11 @@ class MainPage extends React.Component{
                 <div>
                     <form id="containerGet"></form>
                 </div>
-            </body>
+            </div>
+
         );
     }
 }
-
 function RenderMain(){
     const mainPage= React.createElement(MainPage);
     ReactDOM.render(mainPage, document.getElementById('root'));
