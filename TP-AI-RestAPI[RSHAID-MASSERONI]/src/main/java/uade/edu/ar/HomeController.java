@@ -259,7 +259,7 @@ public class HomeController {
 			System.out.println("ok");
 	}
 	
-	@RequestMapping(value = "/agregarPersona", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/eliminarPersona", method = RequestMethod.DELETE)
 	public @ResponseBody<json> void eliminarPersona(@RequestParam(value="documento", required=true) String documento) throws JsonProcessingException {
 			try {
 				Controlador.getInstancia().eliminarPersona(documento);
