@@ -2,11 +2,12 @@ import './bootstrap.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Dropdown from 'react-bootstrap/Dropdown'
-function MenúAgregar(){
+
+function MenuAgregarPersona(){
     ReactDOM.render(
             <div>
-                <h2>Menú "Agregar"</h2>
-                <form id="Agregar">
+                <h2>Agregar Persona</h2>
+                <form id="AgregarPersona">
                     <ul>
                         <li className="form-group">
                         <label for="addNombre"> <strong>Nombre:</strong></label>
@@ -14,38 +15,136 @@ function MenúAgregar(){
                             <input type="text" id="addNombre" name="nombre"></input>
                         </li>
                         <li className="form-group">
-                            <label for="addApellido"> <strong>Apellido:</strong></label>
+                            <label for="addDocumento"> <strong>Documento:</strong></label>
                                 <br></br>
-                            <input type="text" id="addApellido" name="apellido"></input>
+                            <input type="text" id="addDocumento" name="documento"></input>
                         </li>
 
                         <li className="form-group">
-                            <label for="inputState"><strong>Elija un <em>tipo de usuario</em></strong></label>
+                            <label for="inputState"><strong><em>Tipo de usuario</em></strong></label>
                             <select id="inputState" class="form-control" style={{width: '182.5px'}}>
                                 <option selected>Elija una opción...</option>
-                                <option>Persona</option>
                                 <option>Inquilino</option>
                                 <option>Dueño</option>
                             </select>
-                        </li>
-
-                        <li className="form-group">
-                            <label for="addEdificio"> <strong>Edificio:</strong></label>
-                                <br></br>
-                            <input type="text" id="addEdificio" name="edificio"></input>
-                        </li>
-
-                        <li className="form-group">
-                            <label for="Reclamo"> <strong>Descripción del reclamo:</strong></label>
-                                <br></br>
-                            <textarea type="text-area" id="addReclamo" name="reclamo" style={{width:'25%'}}></textarea>
                         </li>
                     </ul>
                 </form>
             </div>, document.getElementById("containerAdd"));
 }
 
-function MenúBuscar(){
+function MenuAgregarReclamo(){
+    ReactDOM.render(
+        <div>
+            <h2>Agregar Reclamo</h2>
+            <form id="AgregarReclamo">
+                <ul>
+                    <li className="form-group">
+                    <label for="addCodigo"> <strong>Codigo del Edificio:</strong></label>
+                        <br></br>
+                        <input type="number" id="addCodigo" name="codigo"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addPiso"> <strong>Piso del Edificio:</strong></label>
+                            <br></br>
+                        <input type="text" id="addPiso" name="piso"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addNumero"> <strong>Numero:</strong></label>
+                            <br></br>
+                        <input type="text" id="addNumero" name="numero"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addDocumento"> <strong>Documento:</strong></label>
+                            <br></br>
+                        <input type="text" id="addDocumento" name="documento"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addUbicacion"> <strong>Ubicacion:</strong></label>
+                            <br></br>
+                        <input type="text" id="addUbicacion" name="ubicacion"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addDescripcion"> <strong>Descripcion:</strong></label>
+                            <br></br>
+                            <textarea type="text-area" id="addDescripcion" name="descripcion" style={{width:'25%'}}></textarea>
+                    </li>
+                </ul>
+            </form>
+        </div>, document.getElementById("containerAdd"));
+}
+
+
+function MenuAgregarDuenio(){
+    ReactDOM.render(
+        <div>
+            <h2>Agregar Dueño a Unidad</h2>
+            <form id="AgregarPersona">
+                <ul>
+                    <li className="form-group">
+                    <label for="addCodigo"> <strong>Codigo de Edificio:</strong></label>
+                        <br></br>
+                        <input type="number" id="addCodigo" name="codigo"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addPiso"> <strong>Piso del Edificio:</strong></label>
+                            <br></br>
+                        <input type="text" id="addPiso" name="piso"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addNumero"> <strong>Numero:</strong></label>
+                            <br></br>
+                        <input type="text" id="addNumero" name="numero"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addDocumento"> <strong>Documento:</strong></label>
+                            <br></br>
+                        <input type="text" id="addDocumento" name="documento"></input>
+                    </li>
+
+
+                </ul>
+            </form>
+        </div>, document.getElementById("containerAdd"));
+}
+function MenuAgregarInquilino(){
+    ReactDOM.render(
+        <div>
+            <h2>Agregar Inquilino a Unidad</h2>
+            <form id="AgregarPersona">
+                <ul>
+                    <li className="form-group">
+                    <label for="addCodigo"> <strong>Codigo de Edificio:</strong></label>
+                        <br></br>
+                        <input type="number" id="addCodigo" name="codigo"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addPiso"> <strong>Piso del Edificio:</strong></label>
+                            <br></br>
+                        <input type="text" id="addPiso" name="piso"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addNumero"> <strong>Numero:</strong></label>
+                            <br></br>
+                        <input type="text" id="addNumero" name="numero"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="addDocumento"> <strong>Documento:</strong></label>
+                            <br></br>
+                        <input type="text" id="addDocumento" name="documento"></input>
+                    </li>
+
+
+                </ul>
+            </form>
+        </div>, document.getElementById("containerAdd"));
+}
+function MenuBuscarEdificio(){}
+function MenuBuscarUnidad(){}
+function MenuBuscarPersona(){}
+function MenuBuscarReclamo(){}
+
+function MenuBuscar(){
     ReactDOM.render(
         <div>
             <h2>Menú "Buscar"</h2>
@@ -117,11 +216,10 @@ class MainPage extends React.Component{
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item onClick={MenúAgregar}>Persona</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenúAgregar}>Inquilino</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenúAgregar}>Dueño</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenúAgregar}>Edificio</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenúAgregar}>Unidad</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarPersona}>Persona</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarInquilino}>Inquilino</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarDuenio}>Dueño</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarReclamo}>Reclamo</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>                        
                         </div>
@@ -132,11 +230,10 @@ class MainPage extends React.Component{
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item onClick={MenúBuscar}>Persona</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenúBuscar}>Inquilino</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenúBuscar}>Dueño</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenúBuscar}>Edificio</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenúBuscar}>Unidad</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenuBuscarPersona}>Persona</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenuBuscarEdificio}>Edificio</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenuBuscarUnidad}>Unidad</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenuBuscarReclamo}>Reclamo</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
