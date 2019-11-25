@@ -1,8 +1,11 @@
 import './bootstrap.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown'
-
+import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col'
+import axios from 'axios'
 function MenuAgregarPersona(){
     ReactDOM.render(
             <div>
