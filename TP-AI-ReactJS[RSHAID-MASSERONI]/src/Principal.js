@@ -6,6 +6,43 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import axios from 'axios'
+
+class MostrarResult extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+           data: []
+        }
+     }
+    componentDidMount() {
+            axios.get('http://www.json-generator.com/api/json/get/cfgQfeHLtu?indent=2')
+            .then(response => {
+                if (response.status === 200 && response != null) {
+                    this.setState({
+                        data: response.data
+                    });
+            } else {
+            console.log('problem');
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    render() {
+        const { data } = this.state;
+        return (
+        <div className="home">
+            {Array.isArray(data) && data.map(object => (
+                <p key={object.id}>{object.name}</p>
+            ))}
+        </div>
+        )
+    }
+}
+
+
 function MenuAgregarPersona(){
     ReactDOM.render(
             <div>
@@ -48,9 +85,9 @@ function MenuAgregarReclamo(){
                         <input type="number" id="addCodigo" name="codigo"></input>
                     </li>
                     <li className="form-group">
-                        <label for="addPiso"> <strong>Piso del Edificio:</strong></label>
+                        <label for="addCodigo"> <strong>Piso del Edificio:</strong></label>
                             <br></br>
-                        <input type="text" id="addPiso" name="piso"></input>
+                        <input type="text" id="addCodigo" name="piso"></input>
                     </li>
                     <li className="form-group">
                         <label for="addNumero"> <strong>Numero:</strong></label>
@@ -90,9 +127,9 @@ function MenuAgregarDuenio(){
                         <input type="number" id="addCodigo" name="codigo"></input>
                     </li>
                     <li className="form-group">
-                        <label for="addPiso"> <strong>Piso del Edificio:</strong></label>
+                        <label for="addFloor"> <strong>Piso del Edificio:</strong></label>
                             <br></br>
-                        <input type="text" id="addPiso" name="piso"></input>
+                        <input type="text" id="addFloor" name="piso"></input>
                     </li>
                     <li className="form-group">
                         <label for="addNumero"> <strong>Numero:</strong></label>
@@ -122,9 +159,9 @@ function MenuAgregarInquilino(){
                         <input type="number" id="addCodigo" name="codigo"></input>
                     </li>
                     <li className="form-group">
-                        <label for="addPiso"> <strong>Piso del Edificio:</strong></label>
+                        <label for="addFloor"> <strong>Piso del Edificio:</strong></label>
                             <br></br>
-                        <input type="text" id="addPiso" name="piso"></input>
+                        <input type="text" id="addFloor" name="piso"></input>
                     </li>
                     <li className="form-group">
                         <label for="addNumero"> <strong>Numero:</strong></label>
@@ -159,7 +196,7 @@ function MenuAgregarImagen(){
                 <form class="box" method="post" action="" enctype="multipart/form-data">
                     <div class="box__input">
                         <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-                        <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+                        <label for="file"><strong>Choose a file:</strong><span class="box__dragndrop">, or drag it here!</span></label>
                         <button class="box__button" type="submit">Upload</button>
                     </div>
                     <div class="box__uploading">Uploading&hellip;</div>
@@ -170,9 +207,59 @@ function MenuAgregarImagen(){
         </div>, document.getElementById('container'));
 }
 
-function MenuBuscarEdificio(){}
+function MenuBuscarEdificio(){
+    ReactDOM.render(
+        <div>
+            <h2>Búsqueda de Edificio</h2>
+            <form id="buscarEdificio">
+                <ul>
+                    <li className="form-group">
+                    <label for="getBuildCode"> <strong>Codigo de Edificio:</strong></label>
+                        <br></br>
+                        <input type="number" id="getBuildCode" name="codigo"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="getBuildName"> <strong>Nombre del Edificio:</strong></label>
+                            <br></br>
+                        <input type="text" id="getBuildName" name="piso"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="getBuildAddress"> <strong>Dirección:</strong></label>
+                            <br></br>
+                        <input type="text" id="getBuildAddress" name="numero"></input>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    ,document.getElementById('container'));
+}
 
-function MenuBuscarUnidad(){}
+function MenuBuscarUnidad(){
+    ReactDOM.render(
+        <div>
+            <h2>Búsqueda de Unidad</h2>
+            <form id="buscarUnidad">
+                <ul>
+                    <li className="form-group">
+                    <label for="getBuildCode"> <strong>Codigo de Edificio:</strong></label>
+                        <br></br>
+                        <input type="number" id="getBuildCode" name="codigo"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="getBuildFloor"> <strong>Piso del Edificio:</strong></label>
+                            <br></br>
+                        <input type="numbre" id="getBuildFloor" name="piso"></input>
+                    </li>
+                    <li className="form-group">
+                        <label for="getUnitNumber"> <strong>Número de Unidad:</strong></label>
+                            <br></br>
+                        <input type="text" id="getUnitNumber" name="numero"></input>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        ,document.getElementById('container'))
+}
 
 function MenuBuscarPersona(){
     ReactDOM.render(
@@ -209,9 +296,9 @@ function habilitados(){
             </Dropdown> 
             <h2>Buscar Habilitados</h2>
             <li className="form-group">
-                <label for="addCodigo"> <strong>Codigo de Edificio:</strong></label>
+                <label for="getCodigo"> <strong>Codigo de Edificio:</strong></label>
                         <br></br>
-                        <input type="number" id="addCodigo" name="codigo"></input>
+                        <input type="number" id="getCodigo" name="codigo"></input>
             </li>
         </div>,   document.getElementById('container'));
 }
@@ -233,9 +320,9 @@ function duenios(){
             </Dropdown> 
             <h2>Buscar Dueños</h2>
             <li className="form-group">
-                <label for="addCodigo"> <strong>Codigo de Edificio:</strong></label>
+                <label for="getCodigo"> <strong>Codigo de Edificio:</strong></label>
                         <br></br>
-                        <input type="number" id="addCodigo" name="codigo"></input>
+                        <input type="number" id="getCodigo" name="codigo"></input>
             </li>
         </div>,   document.getElementById('container'));
 }
@@ -257,29 +344,15 @@ function inquilinos(){
             </Dropdown> 
             <h2>Buscar Inquilinos</h2>
             <li className="form-group">
-                <label for="addCodigo"> <strong>Codigo de Edificio:</strong></label>
+                <label for="getCodigo"> <strong>Codigo de Edificio:</strong></label>
                         <br></br>
-                        <input type="number" id="addCodigo" name="codigo"></input>
+                        <input type="number" id="getCodigo" name="codigo"></input>
             </li>
         </div>,   document.getElementById('container'));
 }
 
 function getallpersonas(){
-    ReactDOM.render(
-    <div>
-            <Dropdown>
-                <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                    Que desea buscar?
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={habilitados}>Habilitados</Dropdown.Item>
-                    <Dropdown.Item onClick={duenios}>Dueños</Dropdown.Item>
-                    <Dropdown.Item onClick={inquilinos}>Inquilinos</Dropdown.Item>
-                    <Dropdown.Item onClick={getallpersonas}>Todas las Personas</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown> 
-        </div>,   document.getElementById('container'));
+    ReactDOM.render(<MostrarResult/>, document.getElementById('resultado'));
 }
 
 function MenuBuscarReclamo(){
@@ -318,19 +391,19 @@ function recPorUnidad(){
 
                 <ul>
                     <li className="form-group">
-                    <label for="addCodigo"> <strong>Codigo de Edificio:</strong></label>
+                    <label for="getCodigo"> <strong>Codigo de Edificio:</strong></label>
                         <br></br>
                         <input type="number" id="addCodigo" name="codigo"></input>
                     </li>
                     <li className="form-group">
-                        <label for="addPiso"> <strong>Piso del Edificio:</strong></label>
+                        <label for="getFloor"> <strong>Piso del Edificio:</strong></label>
                             <br></br>
-                        <input type="text" id="addPiso" name="piso"></input>
+                        <input type="text" id="getFloor" name="piso"></input>
                     </li>
                     <li className="form-group">
-                        <label for="addNumero"> <strong>Numero:</strong></label>
+                        <label for="getNumero"> <strong>Numero:</strong></label>
                             <br></br>
-                        <input type="text" id="addNumero" name="numero"></input>
+                        <input type="text" id="getNumero" name="numero"></input>
                     </li>
                 </ul>
             </div>,   document.getElementById('container'));
@@ -354,9 +427,9 @@ function recPorEdificio(){
 
                 <ul>
                     <li className="form-group">
-                    <label for="addCodigo"> <strong>Codigo de Edificio:</strong></label>
+                    <label for="getCodigo"> <strong>Codigo de Edificio:</strong></label>
                         <br></br>
-                        <input type="number" id="addCodigo" name="codigo"></input>
+                        <input type="number" id="getCodigo" name="codigo"></input>
                     </li>
                 </ul>
             </div>,   document.getElementById('container'));
@@ -380,9 +453,9 @@ function recPorPersona(){
 
                 <ul>
                     <li className="form-group">
-                    <label for="addCodigo"> <strong>Documento:</strong></label>
+                    <label for="getCodigo"> <strong>Documento:</strong></label>
                         <br></br>
-                        <input type="text" id="addDocumento" name="documento"></input>
+                        <input type="text" id="getDocumento" name="documento"></input>
                     </li>
                 </ul>
             </div>,   document.getElementById('container'));
@@ -406,9 +479,9 @@ function recPorNumero(){
 
                 <ul>
                     <li className="form-group">
-                    <label for="addNumero"> <strong>Numero de Reclamo:</strong></label>
+                    <label for="getNumero"> <strong>Numero de Reclamo:</strong></label>
                         <br></br>
-                        <input type="text" id="addNumero" name="Numero"></input>
+                        <input type="text" id="getNumero" name="Numero"></input>
                     </li>
                 </ul>
             </div>,   document.getElementById('container'));
@@ -472,48 +545,13 @@ class BotónAgregar extends React.Component{
     }
 }
 
-class MostrarResult extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-           data: []
-        }
-     }
-    componentDidMount() {
-            axios.get('http://www.json-generator.com/api/json/get/cfgQfeHLtu?indent=2')
-            .then(response => {
-                if (response.status === 200 && response != null) {
-                    this.setState({
-                        data: response.data
-                    });
-            } else {
-            console.log('problem');
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }
-
-    render() {
-        const { data } = this.state;
-        return (
-        <div className="home">
-            {Array.isArray(data) && data.map(object => (
-                <p key={object.id}>{object.name}</p>
-            ))}
-        </div>
-        )
-    }
-}
-
 
 class BotónBuscar extends React.Component{
     constructor(props){
         super(props)
-        this.state={
-            presionadoB: false
-        }
+        // this.state={
+        //     presionadoB: false
+        // }
         this.handleClick=this.handleClick.bind(this);
     }
 
@@ -541,11 +579,13 @@ class MainPage extends React.Component{
 
     selectedAdd(event){
         event.preventDefault();
+        ReactDOM.render(<h2>Menú "Agregar"</h2>, document.getElementById('tagMenú'))
         ReactDOM.render(<BotónAgregar/>, document.getElementById('botónMenú'));
     }
     
     selectedGet(event){
         event.preventDefault();
+        ReactDOM.render(<h2>Menú "Buscar"</h2>, document.getElementById('tagMenú'))
         ReactDOM.render(<BotónBuscar/>, document.getElementById('botónMenú'));
     }
     render(){
@@ -588,7 +628,7 @@ class MainPage extends React.Component{
                 </div>
 
                 <div>
-                    <h2 id="tagMenú">Menú</h2>
+                    <h2 id="tagMenú"></h2>
                     <form id= "container"></form>
                     <div id="botónMenú"></div>
                     <div id= "resultado"></div>
