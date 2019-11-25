@@ -7,75 +7,75 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import Col from 'react-bootstrap/Col'
 import axios from 'axios'
 
-function Persona(){
-    ReactDOM.render(
-        <div>
-            <Form>
-                <Form.Group controlId="formGroupNombre">
-                    <Form.Label><strong>Nombre:</strong></Form.Label>
-                    <Form.Control className="w-25" type="text" placeholder="Ingrese un nombre" />
-                </Form.Group>
-                <Form.Group controlId="formGroupApellido">
-                    <Form.Label><strong>Apellido:</strong></Form.Label>
-                    <Form.Control className="w-25" type="text" placeholder="Ingrese el apellido" />
-                </Form.Group>
-            </Form>        
-        </div>, document.getElementById('container'));
-}
-function Edificio(){
-    ReactDOM.render(
-        <div>
-            <Form>
-                <Form.Group controlId="formGroupEdificioNombre">
-                    <Form.Label><strong>Nombre del Edificio:</strong></Form.Label>
-                    <Form.Control className="w-25" type="text" placeholder="Ingrese un nombre" />
-                </Form.Group>
-                <Form.Group controlId="formGroupIdEdificio">
-                    <Form.Label><strong>N° identificador:</strong></Form.Label>
-                    <Form.Control className="w-25" type="text" placeholder="Ingrese el número ID asociado" />
-                </Form.Group>
-            </Form>        
-        </div>, document.getElementById('container'));
+// function Persona(){
+//     ReactDOM.render(
+//         <div>
+//             <Form>
+//                 <Form.Group controlId="formGroupNombre">
+//                     <Form.Label><strong>Nombre:</strong></Form.Label>
+//                     <Form.Control className="w-25" type="text" placeholder="Ingrese un nombre" />
+//                 </Form.Group>
+//                 <Form.Group controlId="formGroupApellido">
+//                     <Form.Label><strong>Apellido:</strong></Form.Label>
+//                     <Form.Control className="w-25" type="text" placeholder="Ingrese el apellido" />
+//                 </Form.Group>
+//             </Form>        
+//         </div>, document.getElementById('container'));
+// }
+// function Edificio(){
+//     ReactDOM.render(
+//         <div>
+//             <Form>
+//                 <Form.Group controlId="formGroupEdificioNombre">
+//                     <Form.Label><strong>Nombre del Edificio:</strong></Form.Label>
+//                     <Form.Control className="w-25" type="text" placeholder="Ingrese un nombre" />
+//                 </Form.Group>
+//                 <Form.Group controlId="formGroupIdEdificio">
+//                     <Form.Label><strong>N° identificador:</strong></Form.Label>
+//                     <Form.Control className="w-25" type="text" placeholder="Ingrese el número ID asociado" />
+//                 </Form.Group>
+//             </Form>        
+//         </div>, document.getElementById('container'));
 
-}
-function Reclamo(){
-    ReactDOM.render(
-            <div>
-                <Form>
-                    <Form.Group controlId="formGroupEdificioNombre">
-                        <Form.Label><strong>Documento:</strong></Form.Label>
-                        <Form.Control className="w-25" type="text" placeholder="Ingrese el doc. de la persona reclamante" />
-                    </Form.Group>
-                    <Form.Group controlId="formGroupIdEdificio">
-                        <Form.Label><strong>N° identificador:</strong></Form.Label>
-                        <Form.Control className="w-25" type="text" placeholder="Ingrese el número ID asociado" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label><strong>Ubicación:</strong></Form.Label>
-                        <Form.Control className="w-25" type="text" placeholder="Ingrese dónde se ubica el reclamo" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label><strong>Descripción:</strong></Form.Label>
-                        <Form.Control className="w-25" as="textarea" rows="2" placeholder="Describa el reclamo" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label><strong>Estado del reclamo</strong></Form.Label>
-                        <Form.Control className="w-25" as="select">
-                            <option>Elija una opción...</option>
-                            <option>Nuevo</option>
-                            <option>Abierto</option>
-                            <option>En proceso</option>
-                            <option>Desestimado</option>
-                            <option>Anulado</option>
-                            <option>Terminado</option>
-                        </Form.Control>
-                    </Form.Group>
-                </Form>        
-            </div>, document.getElementById("container"));
+// }
+// function Reclamo(){
+//     ReactDOM.render(
+//             <div>
+//                 <Form>
+//                     <Form.Group controlId="formGroupEdificioNombre">
+//                         <Form.Label><strong>Documento:</strong></Form.Label>
+//                         <Form.Control className="w-25" type="text" placeholder="Ingrese el doc. de la persona reclamante" />
+//                     </Form.Group>
+//                     <Form.Group controlId="formGroupIdEdificio">
+//                         <Form.Label><strong>N° identificador:</strong></Form.Label>
+//                         <Form.Control className="w-25" type="text" placeholder="Ingrese el número ID asociado" />
+//                     </Form.Group>
+//                     <Form.Group>
+//                         <Form.Label><strong>Ubicación:</strong></Form.Label>
+//                         <Form.Control className="w-25" type="text" placeholder="Ingrese dónde se ubica el reclamo" />
+//                     </Form.Group>
+//                     <Form.Group>
+//                         <Form.Label><strong>Descripción:</strong></Form.Label>
+//                         <Form.Control className="w-25" as="textarea" rows="2" placeholder="Describa el reclamo" />
+//                     </Form.Group>
+//                     <Form.Group>
+//                         <Form.Label><strong>Estado del reclamo</strong></Form.Label>
+//                         <Form.Control className="w-25" as="select">
+//                             <option>Elija una opción...</option>
+//                             <option>Nuevo</option>
+//                             <option>Abierto</option>
+//                             <option>En proceso</option>
+//                             <option>Desestimado</option>
+//                             <option>Anulado</option>
+//                             <option>Terminado</option>
+//                         </Form.Control>
+//                     </Form.Group>
+//                 </Form>        
+//             </div>, document.getElementById('container'));
 
-}
+// }
 
-function Unidad(){
+function Unidad(){}
 
 function MenuAgregarPersona(){
     ReactDOM.render(
@@ -104,7 +104,7 @@ function MenuAgregarPersona(){
                         </li>
                     </ul>
                 </form>
-            </div>, document.getElementById("containerAdd"));
+            </div>, document.getElementById('container'));
 }
 
 function MenuAgregarReclamo(){
@@ -145,7 +145,7 @@ function MenuAgregarReclamo(){
                     </li>
                 </ul>
             </form>
-        </div>, document.getElementById("containerAdd"));
+        </div>, document.getElementById('container'));
 }
 
 
@@ -179,7 +179,7 @@ function MenuAgregarDuenio(){
 
                 </ul>
             </form>
-        </div>, document.getElementById("containerAdd"));
+        </div>, document.getElementById('container'));
 }
 function MenuAgregarInquilino(){
     ReactDOM.render(
@@ -211,7 +211,7 @@ function MenuAgregarInquilino(){
 
                 </ul>
             </form>
-        </div>, document.getElementById("containerAdd"));
+        </div>, document.getElementById('container'));
 }
 
 function MenuAgregarImagen(){
@@ -238,12 +238,13 @@ function MenuAgregarImagen(){
                     <div class="box__error">Error! <span></span>.</div>
                 </form>
             </form>
-        </div>, document.getElementById("containerAdd"));
+        </div>, document.getElementById('container'));
 }
 
 function MenuBuscarEdificio(){}
 
 function MenuBuscarUnidad(){}
+
 function MenuBuscarPersona(){
     ReactDOM.render(
         <div>
@@ -259,7 +260,7 @@ function MenuBuscarPersona(){
                     <Dropdown.Item onClick={getallpersonas}>Todas las Personas</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown> 
-        </div>,   document.getElementById("containerAdd"));
+        </div>,   document.getElementById('container'));
 }
 
 function habilitados(){
@@ -283,7 +284,7 @@ function habilitados(){
                         <br></br>
                         <input type="number" id="addCodigo" name="codigo"></input>
             </li>
-        </div>,   document.getElementById("containerAdd"));
+        </div>,   document.getElementById('container'));
 }
 
 function duenios(){
@@ -307,7 +308,7 @@ function duenios(){
                         <br></br>
                         <input type="number" id="addCodigo" name="codigo"></input>
             </li>
-        </div>,   document.getElementById("containerAdd"));
+        </div>,   document.getElementById('container'));
 }
 
 function inquilinos(){
@@ -331,7 +332,7 @@ function inquilinos(){
                         <br></br>
                         <input type="number" id="addCodigo" name="codigo"></input>
             </li>
-        </div>,   document.getElementById("containerAdd"));
+        </div>,   document.getElementById('container'));
 }
 
 function getallpersonas(){
@@ -349,7 +350,7 @@ function getallpersonas(){
                     <Dropdown.Item onClick={getallpersonas}>Todas las Personas</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown> 
-        </div>,   document.getElementById("containerAdd"));
+        </div>,   document.getElementById('container'));
 }
 
 function MenuBuscarReclamo(){
@@ -367,7 +368,7 @@ function MenuBuscarReclamo(){
                         <Dropdown.Item onClick={recPorNumero}>por Numero</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown> 
-            </div>,   document.getElementById("containerAdd"));
+            </div>,   document.getElementById('container'));
 }
 
 function recPorUnidad(){
@@ -403,7 +404,7 @@ function recPorUnidad(){
                         <input type="text" id="addNumero" name="numero"></input>
                     </li>
                 </ul>
-            </div>,   document.getElementById("containerAdd"));
+            </div>,   document.getElementById('container'));
 }
 
 function recPorEdificio(){
@@ -429,7 +430,7 @@ function recPorEdificio(){
                         <input type="number" id="addCodigo" name="codigo"></input>
                     </li>
                 </ul>
-            </div>,   document.getElementById("containerAdd"));
+            </div>,   document.getElementById('container'));
 }
 
 function recPorPersona(){
@@ -455,7 +456,7 @@ function recPorPersona(){
                         <input type="text" id="addDocumento" name="documento"></input>
                     </li>
                 </ul>
-            </div>,   document.getElementById("containerAdd"));
+            </div>,   document.getElementById('container'));
 }
 
 function recPorNumero(){
@@ -481,7 +482,7 @@ function recPorNumero(){
                         <input type="text" id="addNumero" name="Numero"></input>
                     </li>
                 </ul>
-            </div>,   document.getElementById("containerAdd"));
+            </div>,   document.getElementById('container'));
 }
 
 function MenuBuscar(){
@@ -511,7 +512,7 @@ function MenuBuscar(){
                     </Form.Group>
                 </Form.Row>
             </Form>
-        </div>, document.getElementById("container"));
+        </div>, document.getElementById('container'));
 
 
 }
@@ -519,27 +520,25 @@ function MenuBuscar(){
 
 
 class BotónAgregar extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            presionadoA: false,
-            isLoaded: false,
-            items: []
-        }
-        this.handleClick=this.handleClick.bind(this);
-    }
+    // constructor(props){
+    //     super(props)
+    //     this.state={
+    //         presionadoA: false,
+    //         isLoaded: false,
+    //         items: []
+    //     }
+    //     this.handleClick=this.handleClick.bind(this);
+    // }
 
-    handleClick(event){
+    // handleClick(event){
         
-    }
+    // }
     
  
 
     render(){
         return (
-            <div>
-                <Button variant="primary" onClick={this.handleClick} type="submit">Agregar</Button>
-            </div>
+            <Button variant="primary" /*onClick={this.handleClick}*/ type="submit">Agregar</Button>
         )
     }
 }
@@ -551,32 +550,32 @@ class MostrarResult extends React.Component{
            data: []
         }
      }
-componentDidMount() {
-        axios.get('http://www.json-generator.com/api/json/get/cfgQfeHLtu?indent=2')
-          .then(response => {
-              if (response.status === 200 && response != null) {
-                this.setState({
-                     data: response.data
-                });
-         } else {
-           console.log('problem');
-         }
-    })
-    .catch(error => {
-        console.log(error);
-    });
-  }
+    componentDidMount() {
+            axios.get('http://www.json-generator.com/api/json/get/cfgQfeHLtu?indent=2')
+            .then(response => {
+                if (response.status === 200 && response != null) {
+                    this.setState({
+                        data: response.data
+                    });
+            } else {
+            console.log('problem');
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 
-  render() {
-    const { data } = this.state;
-    return (
-       <div className="home">
-         {Array.isArray(data) && data.map(object => (
-              <p key={object.id}>{object.name}</p>
-          ))}
-       </div>
-     )
- }
+    render() {
+        const { data } = this.state;
+        return (
+        <div className="home">
+            {Array.isArray(data) && data.map(object => (
+                <p key={object.id}>{object.name}</p>
+            ))}
+        </div>
+        )
+    }
 }
 
 
@@ -596,11 +595,9 @@ class BotónBuscar extends React.Component{
     
     render(){
         return (
-            <div>
-                <Button variant="primary"  onClick={this.handleClick}>
-                    Buscar
-                </Button>
-            </div>
+            <Button variant="primary"  onClick={this.handleClick}>
+                Buscar
+            </Button>
         )
     }
 }
@@ -611,24 +608,17 @@ class MainPage extends React.Component{
         super(props)
         this.selectedAdd=this.selectedAdd.bind(this)
         this.selectedGet=this.selectedGet.bind(this)
-        // this.state={
-        // }
-
     }
 
 
     selectedAdd(event){
         event.preventDefault();
-        this.setState({dropdown:'add'})
-        document.getElementById("tagMenú").innerHTML="Menú 'Agregar'"
-        ReactDOM.render(<BotónAgregar/>, document.getElementById('botónMenú'))
+        ReactDOM.render(<BotónAgregar/>, document.getElementById('botónMenú'));
     }
     
     selectedGet(event){
-        event.preventDefault()
-        this.setState({dropdown:'get'})
-        document.getElementById("tagMenú").innerHTML="Menú 'Buscar'"
-        ReactDOM.render(<BotónBuscar/>, document.getElementById('botónMenú'))
+        event.preventDefault();
+        ReactDOM.render(<BotónBuscar/>, document.getElementById('botónMenú'));
     }
     render(){
         return(     
@@ -642,7 +632,7 @@ class MainPage extends React.Component{
                                         Agregar
                                     </Dropdown.Toggle>
 
-                                    <Dropdown.Menu>
+                                    <Dropdown.Menu onClick={this.selectedAdd}>
                                         <Dropdown.Item onClick={MenuAgregarPersona}>Persona</Dropdown.Item>
                                         <Dropdown.Item onClick={MenuAgregarInquilino}>Inquilino</Dropdown.Item>
                                         <Dropdown.Item onClick={MenuAgregarDuenio}>Dueño</Dropdown.Item>
@@ -657,7 +647,7 @@ class MainPage extends React.Component{
                                     Buscar
                                 </Dropdown.Toggle>
 
-                                <Dropdown.Menu>
+                                <Dropdown.Menu onClick={this.selectedGet}>
                                     <Dropdown.Item onClick={MenuBuscarPersona}>Persona</Dropdown.Item>
                                     <Dropdown.Item onClick={MenuBuscarEdificio}>Edificio</Dropdown.Item>
                                     <Dropdown.Item onClick={MenuBuscarUnidad}>Unidad</Dropdown.Item>
@@ -671,9 +661,9 @@ class MainPage extends React.Component{
 
                 <div>
                     <h2 id="tagMenú">Menú</h2>
-                    <form id="container"></form>
+                    <form id= "container"></form>
                     <div id="botónMenú"></div>
-                    <div id="resultado"></div>
+                    <div id= "resultado"></div>
                 </div>
             </div>
     
