@@ -17,7 +17,8 @@ import org.apache.commons.net.ftp.FTPReply;
 public class FTPConnection {
 
 	private static FTPClient cliente;
-	private static String carpeta = "F:\\Users\\Juampi\\Pictures\\API";
+	//F:\\Users\\Juampi\\Pictures\\API
+	private static String carpeta = "C:\\Users\\JP\\Pictures\\API";
 	private static String formato = ".png";
 	
 	public static FTPClient getConnection() throws SocketException {
@@ -103,7 +104,7 @@ public class FTPConnection {
 		return directions;
 	}
 	
-	public static String uploadFile(File file) {
+	public static String uploadFile(File file, String ubicacion) {
 		
 		if (cliente == null) {
 			try {
@@ -146,7 +147,7 @@ public class FTPConnection {
 				}
 			}
 			
-		String fileLocation= new String(carpeta + "\\" + fileFtpName + formato);
+		String fileLocation= new String(ubicacion + "\\" + fileFtpName + formato);
 		System.out.println(fileLocation);
 		return fileLocation;
 	}
