@@ -636,7 +636,7 @@ class MainPage extends React.Component{
 
                 </div>
 
-                <Col xl={{offset: 0.5}}>
+                <Col>
                     <div>
                         <h2 id="tagMenú"></h2>
                         <form id= "container"></form>
