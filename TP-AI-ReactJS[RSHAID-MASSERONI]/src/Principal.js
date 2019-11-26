@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
+import ListGroup from 'react-bootstrap/ListGroup'
 import axios from 'axios'
 
 class MostrarResult extends React.Component{
@@ -35,7 +36,15 @@ class MostrarResult extends React.Component{
         return (
         <div className="home">
             {Array.isArray(data) && data.map(object => (
-                <p key={object.id}>{object.name}</p>
+                <Col xl={{span: 3, offset: 1}} className="text-center">
+                    <ListGroup>
+                        <ListGroup>
+                            <ListGroup.Item>{object.name}</ListGroup.Item>
+                            <ListGroup.Item>{object.id}</ListGroup.Item>
+                        </ListGroup>
+                        <br></br>
+                    </ListGroup>
+                </Col>
             ))}
         </div>
         )
@@ -627,17 +636,19 @@ class MainPage extends React.Component{
 
                 </div>
 
-                <div>
-                    <h2 id="tagMenú"></h2>
-                    <form id= "container"></form>
-                    <div id="botónMenú"></div>
-                    <div id= "resultado"></div>
-                    <form id="containerAdd"></form>
-                </div>
-                
-                <div>
-                    <form id="containerGet"></form>
-                </div>
+                <Col xl={{offset: 0.5}}>
+                    <div>
+                        <h2 id="tagMenú"></h2>
+                        <form id= "container"></form>
+                        <div id="botónMenú"></div>
+                        <div id= "resultado"></div>
+                        <form id="containerAdd"></form>
+                    </div>
+                    
+                    <div>
+                        <form id="containerGet"></form>
+                    </div>
+                </Col>
             </div>
 
         );
