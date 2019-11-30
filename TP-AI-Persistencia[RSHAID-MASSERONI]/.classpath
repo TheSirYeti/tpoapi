@@ -2,29 +2,29 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/dnsns.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jaccess.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jfxrt.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/jtds-1.2.5.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/localedata.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/nashorn.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunec.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunjce_provider.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunmscapi.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/sunpkcs11.jar"/>
+	<classpathentry kind="lib" path="F:/Users/Juampi/Documents/API/lib/zipfs.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/dnsns.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jaccess.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/javassist-3.4.GA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jfxrt.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jtds-1.2.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/localedata.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/nashorn.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/slf4j-api-1.5.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/slf4j-simple-1.5.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunec.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunjce_provider.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunmscapi.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunpkcs11.jar"/>
-	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/zipfs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

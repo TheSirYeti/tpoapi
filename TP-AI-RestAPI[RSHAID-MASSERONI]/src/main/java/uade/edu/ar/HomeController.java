@@ -22,7 +22,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.annotation.security.RolesAllowed;
 //import javax.ws.rs.core.MediaType;
 import javax.servlet.ServletContext;
 
@@ -34,7 +33,6 @@ import views.*;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.MediaType;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,7 +49,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 
 public class HomeController {
-	
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -71,7 +68,6 @@ public class HomeController {
 		return "home";
 	}
 	
-
 	@RequestMapping(value = "/getEdificio", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String getEdificio(@RequestParam(value="codigo", required = true) int codigo) throws JsonProcessingException{
 			EdificioView edificio = Controlador.getInstancia().findEdificio(codigo); 
@@ -335,8 +331,8 @@ public class HomeController {
 												@RequestParam(value="tipo", required=true) String tipo) throws JsonProcessingException {
 		try {
 			Controlador.getInstancia().agregarImagenAReclamo(numero, direccion, tipo);
-			File file = new File("C:\\Users\\JP\\Pictures\\" + direccion + "." + tipo);
-			new FTPConnection().uploadFile(file, "C:\\Users\\JP\\Pictures\\API\\" + Integer.toString(numero));
+			File file = new File("F:\\Users\\Juampi\\Pictures\\" + direccion + "." + tipo);
+			new FTPConnection().uploadFile(file);
 			
 		} catch (ReclamoException e) {
 			e.getMessage();
@@ -354,4 +350,19 @@ public class HomeController {
 			e.getMessage();
 		}
 	}
+	
+	/*@RequestMapping(value = "/imagenes", method = RequestMethod.GET)
+	public void ArrayByteImagen(HttpServletResponse response) throws IOException {
+		InputStream in = ServletContext.class.getResourceAsStream("/WEB-INF/images/image-example.jpg");
+	    response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+	    IOUtils.copy(in, response.getOutputStream());
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/imagenes/{ruta}", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+	@Cacheable("imagenes")
+	public byte[] imagen(@PathVariable String ruta) throws IOException {
+	    InputStream in = ServletContext.class.getResourceAsStream("imagenes/" + ruta);
+	    return IOUtils.toByteArray(in);
+	}*/
 }
