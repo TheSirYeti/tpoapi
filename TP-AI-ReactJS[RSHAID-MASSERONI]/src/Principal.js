@@ -8,48 +8,132 @@ import Col from 'react-bootstrap/Col'
 import ListGroup from 'react-bootstrap/ListGroup'
 import axios from 'axios'
 
-class MostrarResult extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-           data: []
-        }
-     }
-    componentDidMount() {
-            axios.get('http://www.json-generator.com/api/json/get/cfgQfeHLtu?indent=2')
-            .then(response => {
-                if (response.status === 200 && response != null) {
-                    this.setState({
-                        data: response.data
-                    });
-            } else {
-            console.log('problem');
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
+class MainPage extends React.Component{
+    constructor(props){
+        super(props)
+        this.selectedAdd=this.selectedAdd.bind(this)
+        this.selectedGet=this.selectedGet.bind(this)
     }
 
-    render() {
-        const { data } = this.state;
-        return (
-        <div className="home">
-            {Array.isArray(data) && data.map(object => (
-                <Col xl={{span: 3, offset: 1}} className="text-center">
-                    <ListGroup>
-                        <ListGroup>
-                            <ListGroup.Item>{object.name}</ListGroup.Item>
-                            <ListGroup.Item>{object.id}</ListGroup.Item>
-                        </ListGroup>
-                        <br></br>
-                    </ListGroup>
+
+    selectedAdd(event){
+        event.preventDefault();
+        ReactDOM.render(<h2>Menú "Agregar"</h2>, document.getElementById('tagMenú'))
+        ReactDOM.render(<BotónAgregar/>, document.getElementById('botónMenú'));
+    }
+    
+    selectedGet(event){
+        event.preventDefault();
+        ReactDOM.render(<h2>Menú "Buscar"</h2>, document.getElementById('tagMenú'))
+        // ReactDOM.render(<BotónBuscar/>, document.getElementById('botónMenú'));
+    }
+    render(){
+        return(     
+            <div>
+                <div className="encabezado">
+                    <h1 className="text-center">Sistema Administrador de Edificios, Personas y Reclamos</h1>
+                    <div className="row">
+                        <div className="col col-md-2">
+                            <Dropdown>
+                                    <Dropdown.Toggle variant="warning" id="dropdown-basic">
+                                        Agregar
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu onClick={this.selectedAdd}>
+                                        <Dropdown.Item onClick={MenuAgregarPersona}>Persona</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarInquilino}>Inquilino</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarDuenio}>Dueño</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarReclamo}>Reclamo</Dropdown.Item>
+                                        <Dropdown.Item onClick={MenuAgregarImagen}>Imagen a Reclamo</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>                        
+                        </div>
+                        <div className="col col-md-2">
+                            <Dropdown>
+                                <Dropdown.Toggle variant="warning" id="dropdown-basic">
+                                    Buscar
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu onClick={this.selectedGet}>
+                                    <Dropdown.Item onClick={MenuBuscarPersona}>Persona</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenuBuscarEdificio}>Edificio</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenuBuscarUnidad}>Unidad</Dropdown.Item>
+                                    <Dropdown.Item onClick={MenuBuscarReclamo}>Reclamo</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
+                    </div>
+
+                </div>
+
+                <Col xl={{offset: 0.5}}>
+                    <div>
+                        <h2 id="tagMenú"></h2>
+                        <form id= "container"></form>
+                        <div id="botónMenú"></div>
+                        <div id= "resultado"></div>
+                        <form id="containerAdd"></form>
+                    </div>
+                    
+                    <div>
+                        <form id="containerGet"></form>
+                    </div>
                 </Col>
-            ))}
-        </div>
+            </div>
+
+        );
+    }
+}
+
+class BotónAgregar extends React.Component{
+    // constructor(props){
+    //     super(props)
+    //     this.state={
+    //         presionadoA: false,
+    //         isLoaded: false,
+    //         items: []
+    //     }
+    //     this.handleClick=this.handleClick.bind(this);
+    // }
+
+    // handleClick(event){
+        
+    // }
+    
+ 
+
+    render(){
+        return (
+            <Button variant="primary" /*onClick={this.handleClick}*/ type="submit">Agregar</Button>
         )
     }
 }
+
+
+class BotónBuscar extends React.Component{
+    constructor(props){
+        super(props)
+        // this.state={
+        //     presionadoB: false
+        // }
+        this.handleClick=this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        ReactDOM.render(<GetAllPersonas/>, document.getElementById('resultado'));
+    }
+    
+    
+    render(){
+        return (
+            <Button variant="primary"  onClick={this.handleClick}>
+                Buscar
+            </Button>
+        )
+    }
+}
+
+
 
 
 function MenuAgregarPersona(){
@@ -285,6 +369,7 @@ function MenuBuscarPersona(){
                     <Dropdown.Item onClick={getallpersonas}>Todas las Personas</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown> 
+            <BotónBuscar/>
         </div>,   document.getElementById('container'));
 }
 
@@ -309,6 +394,7 @@ function habilitados(){
                         <br></br>
                         <input type="number" id="getCodigo" name="codigo"></input>
             </li>
+            <BotónBuscar/>
         </div>,   document.getElementById('container'));
 }
 
@@ -333,13 +419,14 @@ function duenios(){
                         <br></br>
                         <input type="number" id="getCodigo" name="codigo"></input>
             </li>
+            <BotónBuscar/>
         </div>,   document.getElementById('container'));
 }
 
 function inquilinos(){
     ReactDOM.render(
     <div>
-            <Dropdown>
+            {/* <Dropdown>
                 <Dropdown.Toggle variant="primary" id="dropdown-basic">
                     Que desea buscar?
                 </Dropdown.Toggle>
@@ -350,19 +437,68 @@ function inquilinos(){
                     <Dropdown.Item onClick={inquilinos}>Inquilinos</Dropdown.Item>
                     <Dropdown.Item onClick={getallpersonas}>Todas las Personas</Dropdown.Item>
                 </Dropdown.Menu>
-            </Dropdown> 
+            </Dropdown>  */}
             <h2>Buscar Inquilinos</h2>
             <li className="form-group">
                 <label for="getCodigo"> <strong>Codigo de Edificio:</strong></label>
                         <br></br>
-                        <input type="number" id="getCodigo" name="codigo"></input>
+                <input type="number" id="getCodigo" name="codigo"></input>
             </li>
+            <BotónBuscar/>
         </div>,   document.getElementById('container'));
 }
 
+
 function getallpersonas(){
-    ReactDOM.render(<MostrarResult/>, document.getElementById('resultado'));
+    ReactDOM.render(<GetAllPersonas/>, document.getElementById('resultado'));
 }
+
+class GetAllPersonas extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+           data: []
+        }
+     }
+    componentDidMount() {
+        
+        const url = 'http://localhost:8080/test/getPersonas';
+
+            axios.get(url)
+            .then(response => {
+                if (response.status === 200 && response != null) {
+                    this.setState({
+                        data: response.data
+                    });
+            } else {
+            console.log('problem');
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    render() {
+        const { data } = this.state;
+        return (
+        <div className="home">
+            {Array.isArray(data) && data.map(object => (
+                <Col xl={{span: 3, offset: 1}} className="text-center">
+                    <ListGroup>
+                        <ListGroup key={object.documento}>
+                            <ListGroup.Item>{object.documento}</ListGroup.Item>
+                            <ListGroup.Item>{object.nombre}</ListGroup.Item>
+                        </ListGroup>
+                        <br></br>
+                    </ListGroup>
+                </Col>
+            ))}
+        </div>
+        )
+    }
+}
+
 
 function MenuBuscarReclamo(){
     ReactDOM.render(
@@ -496,164 +632,10 @@ function recPorNumero(){
             </div>,   document.getElementById('container'));
 }
 
-function MenuBuscar(){
-    ReactDOM.render(
-        <div>
-            <Form>
-                <Form.Group controlId="formGridEdificio">
-                    <Form.Label>Edificio</Form.Label>
-                    <Form.Control className="w-25" placeholder="Ingrese el nombre del edificio" />
-                </Form.Group>
-                
-                <Form.Row>
-                    <Form.Group xl={2} as={Col} controlId="formGridPiso">
-                        <Form.Label>Piso:</Form.Label>
-                        <Form.Control as="select">
-                            <option>Elija un piso...</option>
-                            <option>...</option>
-                        </Form.Control>
-                    </Form.Group>
-
-                    <Form.Group xl={2} as={Col} controlId="formGridUnidad">
-                        <Form.Label>Unidad:</Form.Label>
-                        <Form.Control xl={2} as="select">
-                            <option>Elija una unidad...</option>
-                            <option>...</option>
-                        </Form.Control>
-                    </Form.Group>
-                </Form.Row>
-            </Form>
-        </div>, document.getElementById('container'));
-
-
-}
 
 
 
-class BotónAgregar extends React.Component{
-    // constructor(props){
-    //     super(props)
-    //     this.state={
-    //         presionadoA: false,
-    //         isLoaded: false,
-    //         items: []
-    //     }
-    //     this.handleClick=this.handleClick.bind(this);
-    // }
 
-    // handleClick(event){
-        
-    // }
-    
- 
-
-    render(){
-        return (
-            <Button variant="primary" /*onClick={this.handleClick}*/ type="submit">Agregar</Button>
-        )
-    }
-}
-
-
-class BotónBuscar extends React.Component{
-    constructor(props){
-        super(props)
-        // this.state={
-        //     presionadoB: false
-        // }
-        this.handleClick=this.handleClick.bind(this);
-    }
-
-    handleClick(event){
-        ReactDOM.render(<MostrarResult/>, document.getElementById('resultado'));
-    }
-    
-    
-    render(){
-        return (
-            <Button variant="primary"  onClick={this.handleClick}>
-                Buscar
-            </Button>
-        )
-    }
-}
-
-class MainPage extends React.Component{
-    constructor(props){
-        super(props)
-        this.selectedAdd=this.selectedAdd.bind(this)
-        this.selectedGet=this.selectedGet.bind(this)
-    }
-
-
-    selectedAdd(event){
-        event.preventDefault();
-        ReactDOM.render(<h2>Menú "Agregar"</h2>, document.getElementById('tagMenú'))
-        ReactDOM.render(<BotónAgregar/>, document.getElementById('botónMenú'));
-    }
-    
-    selectedGet(event){
-        event.preventDefault();
-        ReactDOM.render(<h2>Menú "Buscar"</h2>, document.getElementById('tagMenú'))
-        ReactDOM.render(<BotónBuscar/>, document.getElementById('botónMenú'));
-    }
-    render(){
-        return(     
-            <div>
-                <div className="encabezado">
-                    <h1 className="text-center">Sistema Administrador de Edificios, Personas y Reclamos</h1>
-                    <div className="row">
-                        <div className="col col-md-2">
-                            <Dropdown>
-                                    <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                                        Agregar
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu onClick={this.selectedAdd}>
-                                        <Dropdown.Item onClick={MenuAgregarPersona}>Persona</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenuAgregarInquilino}>Inquilino</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenuAgregarDuenio}>Dueño</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenuAgregarReclamo}>Reclamo</Dropdown.Item>
-                                        <Dropdown.Item onClick={MenuAgregarImagen}>Imagen a Reclamo</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>                        
-                        </div>
-                        <div className="col col-md-2">
-                            <Dropdown>
-                                <Dropdown.Toggle variant="warning" id="dropdown-basic">
-                                    Buscar
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu onClick={this.selectedGet}>
-                                    <Dropdown.Item onClick={MenuBuscarPersona}>Persona</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenuBuscarEdificio}>Edificio</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenuBuscarUnidad}>Unidad</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenuBuscarReclamo}>Reclamo</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </div>
-                    </div>
-
-                </div>
-
-                <Col>
-                    <div>
-                        <h2 id="tagMenú"></h2>
-                        <form id= "container"></form>
-                        <div id="botónMenú"></div>
-                        <div id= "resultado"></div>
-                        <form id="containerAdd"></form>
-                    </div>
-                    
-                    <div>
-                        <form id="containerGet"></form>
-                    </div>
-                </Col>
-            </div>
-
-        );
-    }
-}
 function RenderMain(){
     const mainPage= React.createElement(MainPage);
     ReactDOM.render(mainPage, document.getElementById('root'));
