@@ -56,7 +56,7 @@ class MainPage extends React.Component{
 
                                 <Dropdown.Menu onClick={this.selectedGet}>
                                     <Dropdown.Item onClick={MenuBuscarPersona}>Persona</Dropdown.Item>
-                                    <Dropdown.Item onClick={MenuBuscarEdificio}>Edificio</Dropdown.Item>
+                                    <Dropdown.Item onClick={renderMBE}>Edificio</Dropdown.Item>
                                     <Dropdown.Item onClick={MenuBuscarUnidad}>Unidad</Dropdown.Item>
                                     <Dropdown.Item onClick={MenuBuscarReclamo}>Reclamo</Dropdown.Item>
                                 </Dropdown.Menu>
@@ -116,17 +116,13 @@ class BotónBuscar extends React.Component{
         // this.state={
         //     presionadoB: false
         // }
-        this.handleClick=this.handleClick.bind(this);
     }
 
-    handleClick(){
-        ReactDOM.render(<GetAllPersonas/>, document.getElementById('resultado'));
-    }
     
     
     render(){
         return (
-            <Button variant="primary"  onClick={this.handleClick}>
+            <Button variant="primary">
                 Buscar
             </Button>
         )
@@ -300,32 +296,114 @@ function MenuAgregarImagen(){
         </div>, document.getElementById('container'));
 }
 
-function MenuBuscarEdificio(){
-    ReactDOM.render(
-        <div>
-            <h2>Búsqueda de Edificio</h2>
-            <form id="buscarEdificio">
-                <ul>
-                    <li className="form-group">
-                    <label for="getBuildCode"> <strong>Codigo de Edificio:</strong></label>
-                        <br></br>
-                        <input type="number" id="getBuildCode" name="codigo"></input>
-                    </li>
-                    <li className="form-group">
-                        <label for="getBuildName"> <strong>Nombre del Edificio:</strong></label>
-                            <br></br>
-                        <input type="text" id="getBuildName" name="piso"></input>
-                    </li>
-                    <li className="form-group">
-                        <label for="getBuildAddress"> <strong>Dirección:</strong></label>
-                            <br></br>
-                        <input type="text" id="getBuildAddress" name="numero"></input>
-                    </li>
-                </ul>
-            </form>
-        </div>
-    ,document.getElementById('container'));
+function renderMBE(){
+    ReactDOM.render(<MenuBuscarEdificio/>, document.getElementById('container'));
 }
+class MenuBuscarEdificio extends React.Component{
+    constructor(props){
+        super(props);
+        // this.callDB= this.callDB.bind(this);
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.state={
+            clicked: false,
+            nroCod: "",
+            data: []
+        };
+    }
+
+    handleChange(event){
+        this.setState({
+            clicked: true,
+            nroCod: document.getElementById('codigoEdif').value
+        })
+    }
+    
+    handleSubmit(){
+        if(this.state.clicked){
+            const bdd="http://localhost:8080/test/getEdificio?codigo="
+            const nrocod= this.state.nroCod
+            const url= bdd + nrocod
+            axios.get(url)
+            .then(response => {
+                if (response.status === 200 && response != null) {
+                    this.setState({
+                        data: response.data
+                    })
+                    ReactDOM.render(
+                    <Col xl={{span: 3, offset: 1}} className="text-center">
+                        <ListGroup>
+                            <ListGroup key={response.data.codigo}>
+                                <ListGroup.Item>{response.data.nombre}</ListGroup.Item>
+                                <ListGroup.Item>{response.data.direccion}</ListGroup.Item>
+                            </ListGroup>
+                            <br></br>
+                        </ListGroup>
+                    </Col>,document.getElementById('resultado'));
+                } else {
+                console.log('problem');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });   
+        }
+    }
+
+    render(){
+        const {data}=this.state;
+        return(
+            <div>
+                <h2>Búsqueda de Edificio</h2>
+                <Form id="buscarEdificio">
+                    <Form.Group>
+                        <Form.Label>Codigo de Edificio</Form.Label>
+                        <Form.Control id="codigoEdif" type="number" placeholder="Enter codigo" onChange={this.handleChange} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Nombre de Edificio</Form.Label>
+                        <Form.Control type="text" placeholder="Enter nombre" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Dirección</Form.Label>
+                        <Form.Control type="text" placeholder="Enter dirección" />
+                    </Form.Group>
+                </Form>
+                <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
+            </div>);}
+}
+
+// function getEdificio(buildCode){
+//     const data= []
+//     axios.get('http://localhost:8080/test/getEdificio', {
+//         params: {
+//          codigo: buildCode
+//         }
+//     })
+//     .then(response => {
+//         if (response.status === 200 && response != null) {
+//             {data}= response.data;            
+//         } else {
+//           console.log('problem');
+//         }
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     });   
+//     ReactDOM.render(<div className="home">
+//         {Array.isArray(data) && data.map(object => (
+//             <Col xl={{span: 3, offset: 1}} className="text-center">
+//                 <ListGroup>
+//                     <ListGroup key={object.codigo}>
+//                         <ListGroup.Item>{object.nombre}</ListGroup.Item>
+//                         <ListGroup.Item>{object.direccion}</ListGroup.Item>
+//                     </ListGroup>
+//                     <br></br>
+//                 </ListGroup>
+//             </Col>
+//         ))}
+//     </div>, document.getElementById('resultado'));
+// }
 
 function MenuBuscarUnidad(){
     ReactDOM.render(
@@ -464,14 +542,15 @@ class GetAllPersonas extends React.Component{
         
         const url = 'http://localhost:8080/test/getPersonas';
 
-            axios.get(url)
-            .then(response => {
-                if (response.status === 200 && response != null) {
-                    this.setState({
-                        data: response.data
-                    });
+        axios.get(url)
+        
+        .then(response => {
+             if (response.status === 200 && response != null) {
+                this.setState({
+                    data: response.data
+                });
             } else {
-            console.log('problem');
+                console.log('problem');
             }
         })
         .catch(error => {
