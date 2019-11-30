@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/resources"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="/TP-AI-Persistencia[RSHAID-MASSERONI]"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/dnsns.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/hibernate3.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/hibernate-annotations.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/hibernate-commons-annotations.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jaccess.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jfxrt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/jtds-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/localedata.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/nashorn.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunec.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunjce_provider.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunmscapi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/sunpkcs11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JP/Documents/GitHub/tpoapi/TP-AI-Persistencia[RSHAID-MASSERONI]/lib/zipfs.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
