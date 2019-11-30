@@ -275,6 +275,8 @@ function getallpersonas(){
                     <Dropdown.Item onClick={getallpersonas}>Todas las Personas</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown> 
+
+            const response = await fetch('/ar/getPersonas');
         </div>,   document.getElementById("containerAdd"));
 }
 

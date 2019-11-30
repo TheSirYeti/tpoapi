@@ -8,6 +8,7 @@ import java.util.Set;
 
 import daos.DuenioDAO;
 import daos.InquilinoDAO;
+import daos.LoginDAO;
 import daos.EdificioDAO;
 import daos.ImagenDAO;
 import daos.PersonaDAO;
@@ -20,6 +21,7 @@ import exceptions.ReclamoException;
 import exceptions.UnidadException;
 import modelo.Edificio;
 import modelo.Imagen;
+import modelo.Login;
 import modelo.Persona;
 import modelo.Reclamo;
 import modelo.Unidad;
@@ -269,6 +271,19 @@ private static Controlador instancia;
 			imagen.save(imagen, numero);
 			System.out.println("SE AGREGO LA SIGUIENTE DIRECCION: " +  direccion);
 		}
+	}
+	
+	public void registrarUsuario(String usuario, String password, String persona) throws PersonaException {
+		Login login = new Login(usuario, password, persona);
+		boolean verificar = new LoginDAO().existeUsrDocumento(persona);
+		if(verificar == true) {
+			System.out.println("Un usuario ya existe con el documento ingresado");
+		} else verificar = new LoginDAO().existeUsuario(usuario);
+		if(verificar == false) {
+			login.save();
+			System.out.println("Se registro el Usuario");
+		} else System.out.println("Ya existe un usuario con ese nombre");
+		
 	}
 	
 	public void cambiarEstado(int numero, String estado) throws ReclamoException {
