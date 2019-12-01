@@ -82,5 +82,14 @@ public class LoginDAO {
 		return new Login(l.getUsuario(), l.getPassword(), l.getPersonaID());
 	}
 
+	public String getDocumentoFromUsr(String usuario) {
+		SessionFactory sf= HibernateUtil.getSessionFactory();
+		Session s= sf.getCurrentSession();
+		s.beginTransaction();
+		LoginEntity seleccion = (LoginEntity) s.createQuery("from LoginEntity l where l.usuario = ?").setString(0, usuario).uniqueResult();
+		s.getTransaction().commit();
+		return seleccion.getPersonaID();
+	}
+
 
 }

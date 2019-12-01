@@ -50,6 +50,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class HomeController {
 	
+	private String usuario;
+	private String password;
+	private String documento;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -67,6 +70,34 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/verificarLogin", method = RequestMethod.GET, produces = {"application/json"})
+	public @ResponseBody<json> boolean verificarLogin(@RequestParam(value="usuario", required = true) String usuario,  
+			@RequestParam(value="password", required = true) String password) throws JsonProcessingException{
+		boolean b = Controlador.getInstancia().verficarLogin(usuario, password);
+		if(b  == true) {
+			this.usuario = usuario;
+			this.password = password;
+			this.documento = Controlador.getInstancia().getDocumentoFromLogin(usuario);
+		}
+		return b;
+	}
+	
+	@RequestMapping(value = "/registrarUsuario", method = RequestMethod.POST)
+	public @ResponseBody<json> boolean registrarUsuario(@RequestParam(value="usuario", required = true) String usuario,  
+			@RequestParam(value="password", required = true) String password,
+			@RequestParam(value="documento", required = true) String documento) throws JsonProcessingException, PersonaException{
+		boolean b = Controlador.getInstancia().registrarUsuario(usuario, password, documento);
+		return b;
+	}
+	
+	@RequestMapping(value = "/logout")
+	public void logout() {
+		this.usuario = null;
+		this.password  = null;
+		this.documento = null;
+	}
+	
 	
 	@RequestMapping(value = "/getEdificio", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String getEdificio(@RequestParam(value="codigo", required = true) int codigo) throws JsonProcessingException{

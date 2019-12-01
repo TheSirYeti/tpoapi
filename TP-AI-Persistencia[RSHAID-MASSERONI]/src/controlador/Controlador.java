@@ -273,7 +273,8 @@ private static Controlador instancia;
 		}
 	}
 	
-	public void registrarUsuario(String usuario, String password, String persona) throws PersonaException {
+	public boolean registrarUsuario(String usuario, String password, String persona) throws PersonaException {
+		boolean b = false;
 		Login login = new Login(usuario, password, persona);
 		boolean verificar = new LoginDAO().existeUsrDocumento(persona);
 		if(verificar == true) {
@@ -282,9 +283,11 @@ private static Controlador instancia;
 			verificar = new LoginDAO().existeUsuario(usuario);
 			if(verificar == false) {
 				login.save();
+				b = true;
 				System.out.println("Se registro el Usuario");
 			} else System.out.println("Ya existe un usuario con ese nombre");
 		}
+		return b;
 		
 	}
 	
@@ -345,5 +348,9 @@ private static Controlador instancia;
 	
 	private Reclamo buscarReclamo(int numero) throws ReclamoException {
 		return new ReclamoDAO().buscarReclamo(numero);
+	}
+
+	public String getDocumentoFromLogin(String usuario) {
+		return new LoginDAO().getDocumentoFromUsr(usuario);
 	}
 }
