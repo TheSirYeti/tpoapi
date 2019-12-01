@@ -293,6 +293,16 @@ private static Controlador instancia;
 		return respuesta;
 	}
 	
+	public boolean verificarDuenio(String documento, int numero) throws PersonaException {
+		boolean resultado = false;
+		List<Persona> duenios = new DuenioDAO().findDueniosByUnidad(numero);
+		for(Persona p : duenios) {
+			if(p.getDocumento().equals(documento))
+				resultado = true;
+		}
+		return resultado;
+	}
+	
 	public void cambiarEstado(int numero, String estado) throws ReclamoException {
 		Reclamo reclamo = buscarReclamo(numero);
 		reclamo.cambiarEstado(estado);
