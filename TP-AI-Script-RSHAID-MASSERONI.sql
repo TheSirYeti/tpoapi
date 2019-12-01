@@ -3895,7 +3895,7 @@ INSERT duenios (id,identificador,documento) VALUES (1764, 1301, N'DNI30610075')
 INSERT duenios (id,identificador,documento) VALUES (1765, 1401, N'DNI30616697')
 INSERT duenios (id,identificador,documento) VALUES (1766, 1501, N'DNI30647320')
 go
-SET IDENTITY_INSERT duenios] OFF
+SET IDENTITY_INSERT [duenios] OFF
 go
 
 create table inquilinos(
@@ -4349,6 +4349,8 @@ INSERT [dbo].[reclamos] ([idReclamo], [documento], [codigo], [ubicacion], [descr
 INSERT [dbo].[reclamos] ([idReclamo], [documento], [codigo], [ubicacion], [descripcion], [estado], [identificador]) VALUES (4, N'DNI30934496', 3, 'Cocina', 'Gotera en el techo', 'Nuevo', 217)
 INSERT [dbo].[reclamos] ([idReclamo], [documento], [codigo], [ubicacion], [descripcion], [estado], [identificador]) VALUES (5, N'DNI30934496', 3, 'Balcon', 'Se rompio la baranda', 'Nuevo', 246)
 go
+SET IDENTITY_INSERT [dbo].[reclamos] OFF
+go
 
 create table imagenes(
 	numero int not null identity,
@@ -4359,3 +4361,15 @@ create table imagenes(
 	constraint fk_imagenes_reclamo foreign key (idReclamo) references reclamos
 )
 
+create table usrlogin(
+	usuarioid int not null identity,
+	usuario varchar(40) not null,
+	password varchar(40) not null,
+	personaID varchar(20),
+	constraint pk_login primary key (usuarioid),
+	constraint fk_login_persona foreign key (personaID) references personas
+)
+
+SET IDENTITY_INSERT [dbo].[usrlogin] ON
+go
+INSERT [dbo].[usrlogin] ([usuarioid],[usuario],[password],[personaID]) VALUES (1, 'admin', 'contraadmin', null)

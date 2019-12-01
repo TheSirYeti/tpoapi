@@ -32,6 +32,8 @@ public class prueba {
 		
 		c.registrarUsuario("berni", "testcontra", "DNI93277649");
 		//LoginView l = new LoginView("berni", "testcontra", "DNI93277649");
+		boolean b = c.verficarLogin("admin", "contraadmin");
+		System.out.println(b);
 	}
 	
 

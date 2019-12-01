@@ -49,7 +49,7 @@ public class LoginDAO {
 		LoginEntity seleccion = (LoginEntity) s.createQuery("from LoginEntity l where l.usuario = ?").setString(0, usuario).uniqueResult();
 		s.getTransaction().commit();
 		if (seleccion != null) {
-			if(seleccion.getPassword() == password) {
+			if(seleccion.getPassword().equals(password)) {
 				respuesta = true;
 			} else respuesta = false;
 		} else respuesta = false;

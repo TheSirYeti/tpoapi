@@ -269,7 +269,7 @@ private static Controlador instancia;
 			reclamo.agregarImagen(direccion, tipo);
 			//reclamo.update(reclamo);
 			imagen.save(imagen, numero);
-			System.out.println("SE AGREGO LA SIGUIENTE DIRECCION: " +  direccion);
+			System.out.println("SE AGREGO LA SIGUIENTE DIRECCION: " +  direccion); 
 		}
 	}
 	
@@ -278,12 +278,19 @@ private static Controlador instancia;
 		boolean verificar = new LoginDAO().existeUsrDocumento(persona);
 		if(verificar == true) {
 			System.out.println("Un usuario ya existe con el documento ingresado");
-		} else verificar = new LoginDAO().existeUsuario(usuario);
-		if(verificar == false) {
-			login.save();
-			System.out.println("Se registro el Usuario");
-		} else System.out.println("Ya existe un usuario con ese nombre");
+		} else {
+			verificar = new LoginDAO().existeUsuario(usuario);
+			if(verificar == false) {
+				login.save();
+				System.out.println("Se registro el Usuario");
+			} else System.out.println("Ya existe un usuario con ese nombre");
+		}
 		
+	}
+	
+	public boolean verficarLogin(String usuario, String password) {
+		boolean respuesta = new LoginDAO().verificarLogin(usuario, password);
+		return respuesta;
 	}
 	
 	public void cambiarEstado(int numero, String estado) throws ReclamoException {
