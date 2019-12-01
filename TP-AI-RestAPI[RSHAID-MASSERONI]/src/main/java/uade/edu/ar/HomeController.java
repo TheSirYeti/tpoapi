@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import java.io.File;
 //import java.awt.PageAttributes.MediaType;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,7 +60,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model) throws MalformedURLException {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -68,7 +71,11 @@ public class HomeController {
 		
 		
 		model.addAttribute("serverTime", formattedDate );		
+		URL test = new File("F:\\Users\\Juampi\\Pictures\\4278.png").toURI().toURL();
+		System.out.println(test);
 		return "home";
+		
+		
 	}
 	
 	@RequestMapping(value = "/verificarLogin", method = RequestMethod.GET, produces = {"application/json"})
@@ -301,7 +308,10 @@ public class HomeController {
 	
 	@RequestMapping(value = "/reclamosPorEdificio", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String reclamosPorEdificio(@RequestParam(value="codigo", required = true) int codigo) throws JsonProcessingException{
-		List<ReclamoView> reclamo = Controlador.getInstancia().reclamosPorEdificio(codigo); 
+		List<ReclamoView> reclamo = null;
+		if(this.usuario.equals("admin")) {
+			reclamo = Controlador.getInstancia().reclamosPorEdificio(codigo); 
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(reclamo);
 	}
@@ -309,8 +319,11 @@ public class HomeController {
 	@RequestMapping(value = "/reclamosPorUnidad", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String reclamosPorUnidad(@RequestParam(value="codigo", required = true) int codigo,
 														@RequestParam(value="piso", required = true) String piso,
-														@RequestParam(value="numero", required = true) String numero) throws JsonProcessingException{
-		List<ReclamoView> reclamos = Controlador.getInstancia().reclamosPorUnidad(codigo, piso, numero); 
+														@RequestParam(value="numero", required = true) String numero) throws JsonProcessingException, NumberFormatException, PersonaException{
+		List<ReclamoView> reclamos = null;
+		if(Controlador.getInstancia().verificarDuenio(this.usuario, Integer.parseInt(numero))) {
+			 reclamos = Controlador.getInstancia().reclamosPorUnidad(codigo, piso, numero);
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(reclamos);
 	}
@@ -329,7 +342,10 @@ public class HomeController {
 	
 	@RequestMapping(value = "/reclamosPorPersona", method = RequestMethod.GET, produces = {"application/json"})
 	public @ResponseBody<json> String reclamosPorPersona(@RequestParam(value="documento", required = true) String documento) throws JsonProcessingException{
-		List<ReclamoView> reclamo = Controlador.getInstancia().reclamosPorPersona(documento);
+		List<ReclamoView> reclamo = null;
+		if(this.documento.equals(documento) || this.usuario.equals("admin")) {
+			reclamo = Controlador.getInstancia().reclamosPorPersona(documento);
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.writeValueAsString(reclamo); 
 	}
@@ -342,8 +358,10 @@ public class HomeController {
 													@RequestParam(value="ubicacion", required=true) String ubicacion,
 													@RequestParam(value="descripcion", required=true) String descripcion) throws JsonProcessingException {
 			try {
-				Controlador.getInstancia().agregarReclamo(codigo, piso, numero, documento, ubicacion, descripcion);
-			} catch (NumberFormatException e) {
+				if(this.documento.equals(documento) || this.usuario.equals("admin")) {
+					Controlador.getInstancia().agregarReclamo(codigo, piso, numero, documento, ubicacion, descripcion);
+				}
+			} catch (NumberFormatException e) { 
 				e.getMessage();
 			} catch (EdificioException e) {
 				e.getMessage();
@@ -369,6 +387,22 @@ public class HomeController {
 			e.getMessage();
 		}
 	}
+	
+	@RequestMapping(value = "/agregarImagen", method = RequestMethod.POST)
+	public @ResponseBody<json> void agregarImagen(@RequestParam(value="imagen", required=true) File imagen,
+													@RequestParam(value="numero", required=true) int numero) throws JsonProcessingException {
+		try {
+			System.out.println(imagen.getAbsolutePath());
+			Controlador.getInstancia().agregarImagenAReclamo(numero, imagen.getPath(), FilenameUtils.getExtension(imagen.getPath()));
+			
+			new FTPConnection().uploadFile(imagen);
+			
+		} catch (ReclamoException e) {
+			e.getMessage();
+		}
+	}
+	
+	
 	
 	@RequestMapping(value = "/cambiarEstado", method = RequestMethod.PUT)
 	public @ResponseBody<json> void cambiarEstado(@RequestParam(value="numero", required=true) int numero,
