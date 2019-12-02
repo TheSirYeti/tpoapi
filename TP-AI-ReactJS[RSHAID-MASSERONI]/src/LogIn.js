@@ -3,6 +3,12 @@ import './App.js'
 import RenderMain from './Principal.js'
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Button from 'react-bootstrap/Button'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col'
+import ListGroup from 'react-bootstrap/ListGroup'
+import axios from 'axios'
 // className PaginaLogIn extends React.Component{
 //     render(){
 //         return(
@@ -14,6 +20,49 @@ import ReactDOM from 'react-dom';
 //     }
 // }
 class PaginaLogIn extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.state={
+            clicked: false,
+            sUsuario: "",
+            sPassword: ""
+        };
+    }
+
+    handleChange(event){
+        this.setState({
+            clicked: true,
+            sUsuario: document.getElementById('addUsername').value,
+            sPassword: document.getElementById('addPassword').value
+        });
+
+    }
+    
+    handleSubmit(event){
+        console.log(this.state.sNombre);
+        console.log(this.state.sDocumento);
+        var url = 'http://localhost:8080/ar/verificarLogin?usuario=' + this.state.sUsuario + '&password=' + this.state.sPassword;
+        if(this.state.clicked){
+            axios.get(url)
+            .then(function (response) {
+                if(response.data === true){
+                    axios.get(url).then(RenderMain)
+                } 
+                else{
+                    window.alert("Usuario / Contraseña Incorrecta");
+                }
+                console.log(response);
+                console.log("SUCCess")
+              })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+        
+    }
+    
     render(){
         return(     
             <div className="container">
@@ -28,29 +77,24 @@ class PaginaLogIn extends React.Component{
 
                 <div className="row">
                     <form className="col-md-6 col-md-offset-3" action="">
-                        <label>Usuario</label>
-                        <input className="form-control" type="text" name="username" required placeholder="Ingrese un usuario"/>
+                        <label htmlFor="addUsuario">Usuario</label>
+                        <input className="form-control" type="text" id="addUsername" name="username" onChange={this.handleChange} required placeholder="Ingrese un usuario"/>
                         <br></br>
                         <div className="row">
                             <div className="col-md-12 col-md-offset-3" >
-                                <label>Contraseña</label>
-                                <input className="form-control" type="password" name="pwd" required placeholder="Ingrese la contraseña asociada"/>
+                            <label htmlFor="addPassword">Contraseña</label>
+                                <input className="form-control" type="text" id="addPassword" name="password" onChange={this.handleChange} required placeholder="Ingrese la contraseña asociada"/>
                             </div>
                         </div>
                         <br></br><br></br>
                         <div className="row">
                             <div className="col-md-6 col-md-offset-3">
-                                <button className="btn btn-success" type="submit" name="submit" value="login" onClick={RenderMain}>Log in</button>
+                            <Button variant="primary" onClick={this.handleSubmit}>Ingresar</Button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <br></br>
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
-                        <button type="submit" className="btn btn-secondary" name="submit" value="signin">Registrar</button>
-                    </div>
-                </div>
             </div>
         );
     }
