@@ -154,25 +154,27 @@ class AddPerson extends React.Component{
             sNombre: document.getElementById('addNombre').value,
             sDocumento: document.getElementById('addDocumento').value
         });
-
+        
     }
     
-    handleSubmit(event){
+    handleSubmit(event){        
         console.log(this.state.sNombre);
         console.log(this.state.sDocumento);
-        if(this.state.clicked){
-            axios.post('http://localhost:8080/ar/agregarPersona', {
+        const usuario = {
             nombre: this.state.sNombre,
             documento: this.state.sDocumento
-          })
-          .then(function (response) {
-            console.log(response);
-            console.log("SUCCess")
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
         }
+        if(this.state.clicked){
+            var url= 'http://localhost:8080/ar/agregarPersona?nombre=' + this.state.sNombre + '&documento=' + this.state.sDocumento;
+            axios.post(url)
+            .then(function (response) {
+                console.log(response);
+                console.log("SUCCess")
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            }
         
     }
 
@@ -792,13 +794,23 @@ class GetAllPersonas extends React.Component{
         }
      }
     componentDidMount() {
-        
-        const url = 'http://localhost:8080/ar/getPersonas';
-
-        axios.get(url)
-        
+        axios.get("http://localhost:8080/ar/getPersonas")
         .then(response => {
              if (response.status === 200 && response != null) {
+                ReactDOM.render(
+                <div>
+                    {Array.isArray(response.data) && response.data.map(object => (
+                    <Col xl={{span: 3, offset: 1}} className="text-center">
+                        <ListGroup>
+                            <ListGroup key={object.documento}>
+                                <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                <ListGroup.Item>{object.nombre}</ListGroup.Item>
+                            </ListGroup>
+                            <br></br>
+                        </ListGroup>
+                    </Col>))}
+                </div>, document.getElementById('resultado'));
+
                 this.setState({
                     data: response.data
                 });
@@ -812,22 +824,7 @@ class GetAllPersonas extends React.Component{
     }
 
     render() {
-        const { data } = this.state;
-        return (
-        <div className="home">
-            {Array.isArray(data) && data.map(object => (
-                <Col xl={{span: 3, offset: 1}} className="text-center">
-                    <ListGroup>
-                        <ListGroup key={object.documento}>
-                            <ListGroup.Item>{object.documento}</ListGroup.Item>
-                            <ListGroup.Item>{object.nombre}</ListGroup.Item>
-                        </ListGroup>
-                        <br></br>
-                    </ListGroup>
-                </Col>
-            ))}
-        </div>
-        )
+        return (<div/>)
     }
 }
 
@@ -893,6 +890,11 @@ class PorUnidad extends React.Component{
                         {Array.isArray(response.data) && response.data.map(object => (
                             <Col xl={{span: 3, offset: 1}} className="text-center">
                                 <ListGroup>
+                                <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                    <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.descripcion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.estado}</ListGroup.Item>
+
                                 <br></br>
                                 </ListGroup>
                             </Col>
@@ -946,9 +948,70 @@ class PorUnidad extends React.Component{
 }
 
 function recPorEdificio(){
-    ReactDOM.render(
-        <div>
-                 <Dropdown>
+    ReactDOM.render(<PorEdificio/>,document.getElementById('container'));
+}
+
+class PorEdificio extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.state={
+            clicked: false,
+            // nroCod: "",
+            data: []
+        };
+    }
+
+    handleChange(event){
+        this.setState({
+            clicked: true,
+        })
+    }
+    
+    handleSubmit(event){
+        console.log(this.state.clicked)
+        if(this.state.clicked){
+            const bdd="http://localhost:8080/ar/reclamosPorEdificio"
+            axios.get(bdd,{
+                params:{
+                    codigo: document.getElementById('getCodigo').value,
+                }
+            })
+            .then(response => {
+                if (response.status === 200 && response != null) {
+                    // this.setState({
+                    //     data: response.data
+                    // })
+                    ReactDOM.render(
+                    <div className="home">
+                        {Array.isArray(response.data) && response.data.map(object => (
+                            <Col xl={{span: 3, offset: 1}} className="text-center">
+                                <ListGroup>
+                                <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                    <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.descripcion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.estado}</ListGroup.Item>
+
+                                <br></br>
+                                </ListGroup>
+                            </Col>
+                        ))}
+                    </div>,document.getElementById('resultado'));
+                } else {
+                console.log('problem');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });   
+        }
+    }
+
+    render(){
+        return(
+            <div>
+                <Dropdown>
                     <Dropdown.Toggle variant="primary" id="dropdown-basic">
                         Como desea buscar el Reclamo?
                     </Dropdown.Toggle>
@@ -968,12 +1031,71 @@ function recPorEdificio(){
                         <input type="number" id="getCodigo" name="codigo"></input>
                     </li>
                 </ul>
-            </div>,   document.getElementById('container'));
+            </div>);
+    }
 }
 
 function recPorPersona(){
-    ReactDOM.render(
-        <div>
+    ReactDOM.render(<PorPersona/>, document.getElementById('container'));
+}
+
+class PorPersona extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.state={
+            clicked: false,
+            // nroCod: "",
+            data: []
+        };
+    }
+
+    handleChange(event){
+        this.setState({
+            clicked: true,
+        })
+    }
+    
+    handleSubmit(event){
+        console.log(this.state.clicked)
+        if(this.state.clicked){
+            const bdd="http://localhost:8080/ar/reclamosPorPersona"
+            axios.get(bdd,{
+                params:{
+                    codigo: document.getElementById('getDocumento').value,
+                }
+            })
+            .then(response => {
+                if (response.status === 200 && response != null) {
+                    ReactDOM.render(
+                    <div className="home">
+                        {Array.isArray(response.data) && response.data.map(object => (
+                            <Col xl={{span: 3, offset: 1}} className="text-center">
+                                <ListGroup>
+                                    <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                    <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.descripcion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.estado}</ListGroup.Item>
+                                <br></br>
+                                </ListGroup>
+                            </Col>
+                        ))}
+                    </div>,document.getElementById('resultado'));
+                } else {
+                console.log('problem');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });   
+        }
+    }
+
+    
+    render(){
+        return(
+            <div>
                 <Dropdown>
                     <Dropdown.Toggle variant="primary" id="dropdown-basic">
                         Como desea buscar el Reclamo?
@@ -994,33 +1116,92 @@ function recPorPersona(){
                         <input type="text" id="getDocumento" name="documento"></input>
                     </li>
                 </ul>
-            </div>,   document.getElementById('container'));
+            </div>);
+    }
 }
 
 function recPorNumero(){
-    ReactDOM.render(
-        <div>
-                <Dropdown>
-                    <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                        Como desea buscar el Reclamo?
-                    </Dropdown.Toggle>
-    
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={recPorUnidad}>por Unidad</Dropdown.Item>
-                        <Dropdown.Item onClick={recPorEdificio}>por Edificio</Dropdown.Item>
-                        <Dropdown.Item onClick={recPorPersona}>por Persona</Dropdown.Item>
-                        <Dropdown.Item onClick={recPorNumero}>por Numero</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown> 
+    ReactDOM.render(<PorNumero/>, document.getElementById('container'));
+}
 
-                <ul>
-                    <li className="form-group">
-                    <label for="getNumero"> <strong>Numero de Reclamo:</strong></label>
-                        <br></br>
-                        <input type="text" id="getNumero" name="Numero"></input>
-                    </li>
-                </ul>
-            </div>,   document.getElementById('container'));
+class PorNumero extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleChange=this.handleChange.bind(this);
+        this.state={
+            clicked: false,
+            // nroCod: "",
+            data: []
+        };
+    }
+
+    handleChange(event){
+        this.setState({
+            clicked: true,
+        })
+    }
+    
+    handleSubmit(event){
+        console.log(this.state.clicked)
+        if(this.state.clicked){
+            const bdd="http://localhost:8080/ar/reclamosPorNumero"
+            axios.get(bdd,{
+                params:{
+                    codigo: document.getElementById('getNumero').value,
+                }
+            })
+            .then(response => {
+                if (response.status === 200 && response != null) {
+                    ReactDOM.render(
+                    <div className="home">
+                        {Array.isArray(response.data) && response.data.map(object => (
+                            <Col xl={{span: 3, offset: 1}} className="text-center">
+                                <ListGroup>
+                                    <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                    <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.descripcion}</ListGroup.Item>
+                                    <ListGroup.Item>{object.estado}</ListGroup.Item>
+                                <br></br>
+                                </ListGroup>
+                            </Col>
+                        ))}
+                    </div>,document.getElementById('resultado'));
+                } else {
+                console.log('problem');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });   
+        }
+    }    
+    
+    render(){
+        return(
+            <div>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                            Como desea buscar el Reclamo?
+                        </Dropdown.Toggle>
+        
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={recPorUnidad}>por Unidad</Dropdown.Item>
+                            <Dropdown.Item onClick={recPorEdificio}>por Edificio</Dropdown.Item>
+                            <Dropdown.Item onClick={recPorPersona}>por Persona</Dropdown.Item>
+                            <Dropdown.Item onClick={recPorNumero}>por Numero</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown> 
+
+                    <ul>
+                        <li className="form-group">
+                        <label for="getNumero"> <strong>Numero de Reclamo:</strong></label>
+                            <br></br>
+                            <input type="text" id="getNumero" name="Numero"></input>
+                        </li>
+                    </ul>
+            </div>);
+    }
 }
 
 
