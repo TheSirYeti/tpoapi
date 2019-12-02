@@ -876,7 +876,7 @@ class PorUnidad extends React.Component{
             axios.get(bdd,{
                 params:{
                     codigo: document.getElementById('getCodigo').value,
-                    piso: document.getElementById('getFloorNum').value,
+                    piso: document.getElementById('getFloor').value,
                     numero: document.getElementById('getNum').value
                 }
             })
