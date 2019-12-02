@@ -934,12 +934,12 @@ class PorUnidad extends React.Component{
                     <li className="form-group">
                         <label for="getFloor"> <strong>Piso del Edificio:</strong></label>
                             <br></br>
-                        <input type="text" id="getFloor" name="piso" onChange={this.handleChange}></input>
+                        <input type="number" id="getFloor" name="piso" onChange={this.handleChange}></input>
                     </li>
                     <li className="form-group">
                         <label for="getNumero"> <strong>Numero:</strong></label>
                             <br></br>
-                        <input type="text" id="getNumero" name="numero" onChange={this.handleChange}></input>
+                        <input type="number" id="getNumero" name="numero" onChange={this.handleChange}></input>
                     </li>
                 </ul>
                 <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
@@ -1201,7 +1201,7 @@ class PorNumero extends React.Component{
                         <li className="form-group">
                         <label for="getNumero"> <strong>Numero de Reclamo:</strong></label>
                             <br></br>
-                            <input type="text" id="getNumero" name="Numero" onChange={this.handleChange}></input>
+                            <input type="number" id="getNumero" name="Numero" onChange={this.handleChange}></input>
                         </li>
                     </ul>
                     <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
