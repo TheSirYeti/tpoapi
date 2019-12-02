@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.classic.Session;
 
+import entities.EdificioEntity;
 import entities.UnidadEntity;
 import exceptions.UnidadException;
 import hibernate.HibernateUtil;

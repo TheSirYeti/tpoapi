@@ -358,9 +358,15 @@ public class HomeController {
 													@RequestParam(value="ubicacion", required=true) String ubicacion,
 													@RequestParam(value="descripcion", required=true) String descripcion) throws JsonProcessingException {
 			try {
-				if(this.documento.equals(documento) || this.usuario.equals("admin")) {
-					Controlador.getInstancia().agregarReclamo(codigo, piso, numero, documento, ubicacion, descripcion);
-				}
+				System.out.println(codigo);
+				System.out.println(piso);
+				System.out.println(numero);
+				System.out.println(documento);
+				System.out.println(ubicacion);
+				System.out.println(descripcion);
+				
+				Controlador.getInstancia().agregarReclamo(codigo, piso, numero, documento, ubicacion, descripcion);
+				
 			} catch (NumberFormatException e) { 
 				e.getMessage();
 			} catch (EdificioException e) {
