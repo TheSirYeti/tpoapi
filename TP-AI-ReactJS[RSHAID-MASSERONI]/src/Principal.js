@@ -1028,7 +1028,7 @@ class PorEdificio extends React.Component{
                     <li className="form-group">
                     <label for="getCodigo"> <strong>Codigo de Edificio:</strong></label>
                         <br></br>
-                        <input type="number" id="getCodigo" name="codigo"></input>
+                        <input type="number" id="getCodigo" name="codigo" onChange={this.handleChange}></input>
                     </li>
                 </ul>
                 <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
@@ -1115,7 +1115,7 @@ class PorPersona extends React.Component{
                     <li className="form-group">
                     <label for="getCodigo"> <strong>Documento:</strong></label>
                         <br></br>
-                        <input type="text" id="getDocumento" name="documento"></input>
+                        <input type="text" id="getDocumento" name="documento" onChange={this.handleChange}></input>
                     </li>
                 </ul>
                 <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
@@ -1201,7 +1201,7 @@ class PorNumero extends React.Component{
                         <li className="form-group">
                         <label for="getNumero"> <strong>Numero de Reclamo:</strong></label>
                             <br></br>
-                            <input type="text" id="getNumero" name="Numero"></input>
+                            <input type="text" id="getNumero" name="Numero" onChange={this.handleChange}></input>
                         </li>
                     </ul>
                     <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
