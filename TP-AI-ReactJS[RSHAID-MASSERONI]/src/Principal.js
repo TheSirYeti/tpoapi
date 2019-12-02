@@ -890,11 +890,11 @@ class PorUnidad extends React.Component{
                         {Array.isArray(response.data) && response.data.map(object => (
                             <Col xl={{span: 3, offset: 1}} className="text-center">
                                 <ListGroup>
-                                <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                 <ListGroup.Item>{object.usuario.nombre}</ListGroup.Item>
                                     <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>Piso {object.unidad.piso}, N° {object.unidad.numero}</ListGroup.Item>
                                     <ListGroup.Item>{object.descripcion}</ListGroup.Item>
                                     <ListGroup.Item>{object.estado}</ListGroup.Item>
-
                                 <br></br>
                                 </ListGroup>
                             </Col>
@@ -988,8 +988,9 @@ class PorEdificio extends React.Component{
                         {Array.isArray(response.data) && response.data.map(object => (
                             <Col xl={{span: 3, offset: 1}} className="text-center">
                                 <ListGroup>
-                                <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                    <ListGroup.Item>{object.usuario.nombre}</ListGroup.Item>
                                     <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>Piso {object.unidad.piso}, N° {object.unidad.numero}</ListGroup.Item>
                                     <ListGroup.Item>{object.descripcion}</ListGroup.Item>
                                     <ListGroup.Item>{object.estado}</ListGroup.Item>
 
@@ -1075,8 +1076,9 @@ class PorPersona extends React.Component{
                         {Array.isArray(response.data) && response.data.map(object => (
                             <Col xl={{span: 3, offset: 1}} className="text-center">
                                 <ListGroup>
-                                    <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                    <ListGroup.Item>{object.usuario.nombre}</ListGroup.Item>
                                     <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>Piso {object.unidad.piso}, N° {object.unidad.numero}</ListGroup.Item>
                                     <ListGroup.Item>{object.descripcion}</ListGroup.Item>
                                     <ListGroup.Item>{object.estado}</ListGroup.Item>
                                 <br></br>
@@ -1162,8 +1164,9 @@ class PorNumero extends React.Component{
                         {Array.isArray(response.data) && response.data.map(object => (
                             <Col xl={{span: 3, offset: 1}} className="text-center">
                                 <ListGroup>
-                                    <ListGroup.Item>{object.documento}</ListGroup.Item>
+                                    <ListGroup.Item>{object.usuario.nombre}</ListGroup.Item>
                                     <ListGroup.Item>{object.ubicacion}</ListGroup.Item>
+                                    <ListGroup.Item>Piso {object.unidad.piso}, N° {object.unidad.numero}</ListGroup.Item>
                                     <ListGroup.Item>{object.descripcion}</ListGroup.Item>
                                     <ListGroup.Item>{object.estado}</ListGroup.Item>
                                 <br></br>
