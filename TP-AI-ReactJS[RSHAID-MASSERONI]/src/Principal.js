@@ -877,7 +877,7 @@ class PorUnidad extends React.Component{
                 params:{
                     codigo: document.getElementById('getCodigo').value,
                     piso: document.getElementById('getFloor').value,
-                    numero: document.getElementById('getNum').value
+                    numero: document.getElementById('getNumero').value
                 }
             })
             .then(response => {
