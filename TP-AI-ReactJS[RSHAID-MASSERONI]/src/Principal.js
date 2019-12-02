@@ -1031,6 +1031,8 @@ class PorEdificio extends React.Component{
                         <input type="number" id="getCodigo" name="codigo"></input>
                     </li>
                 </ul>
+                <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
+
             </div>);
     }
 }
@@ -1116,6 +1118,8 @@ class PorPersona extends React.Component{
                         <input type="text" id="getDocumento" name="documento"></input>
                     </li>
                 </ul>
+                <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
+
             </div>);
     }
 }
@@ -1200,6 +1204,7 @@ class PorNumero extends React.Component{
                             <input type="text" id="getNumero" name="Numero"></input>
                         </li>
                     </ul>
+                    <Button variant="primary" onClick={this.handleSubmit}>Buscar</Button>
             </div>);
     }
 }
