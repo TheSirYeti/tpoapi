@@ -24,10 +24,17 @@ class PaginaLogIn extends React.Component{
         super(props);
         this.handleSubmit=this.handleSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this);
+        this.handleChangeReg=this.handleChangeReg.bind(this);
+        this.handleSubmitReg=this.handleSubmitReg.bind(this);
+
         this.state={
             clicked: false,
             sUsuario: "",
-            sPassword: ""
+            sPassword: "",
+            sUsuarioReg: "",
+            sPasswordReg: "",
+            sDocumentoReg: "",
+
         };
     }
 
@@ -37,12 +44,22 @@ class PaginaLogIn extends React.Component{
             sUsuario: document.getElementById('addUsername').value,
             sPassword: document.getElementById('addPassword').value
         });
+        
+    }
+    
+    handleChangeReg(event){
+        this.setState({
+            clicked: true,
+            sUsuarioReg: document.getElementById('addUsernameReg').value,
+            sPasswordReg: document.getElementById('addPasswordReg').value,
+            sDocumentoReg: document.getElementById('addDocumentoReg').value,
+        });
 
     }
     
     handleSubmit(event){
-        console.log(this.state.sNombre);
-        console.log(this.state.sDocumento);
+        console.log(this.state.sUsuario);
+        console.log(this.state.sPassword);
         var url = 'http://localhost:8080/ar/verificarLogin?usuario=' + this.state.sUsuario + '&password=' + this.state.sPassword;
         if(this.state.clicked){
             axios.get(url)
@@ -62,6 +79,30 @@ class PaginaLogIn extends React.Component{
         }
         
     }
+
+    
+    handleSubmitReg(event){
+        console.log(this.state.sUsuarioReg);
+        console.log(this.state.sDocumentoReg);
+        var url = 'http://localhost:8080/ar/registrarUsuario?usuario=' + this.state.sUsuarioReg + '&password=' + this.state.sPasswordReg + '&documento=' + this.state.sDocumentoReg;
+        if(this.state.clicked){
+            axios.post(url)
+            .then(function (response) {
+                if(response.data === true){
+                    axios.post(url).then(window.alert("Usuario registrado"))
+                    console.log(response);
+                    console.log("SUCCess")
+                } 
+                else{
+                    window.alert("El usuario ya existe");
+                }
+              })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+        
+    }
     
     render(){
         return(     
@@ -69,7 +110,7 @@ class PaginaLogIn extends React.Component{
     
                 <div className="row">
                     <div className="col-md-12 text-center">
-                        <h1>Registro</h1>
+                        <h1>Login</h1>
                     </div>
                 </div>
                 <br></br>
@@ -95,6 +136,34 @@ class PaginaLogIn extends React.Component{
                     </form>
                 </div>
                 <br></br>
+                <div className="row">
+                <h1>Registro</h1>
+                    <form className="col-md-6 col-md-offset-3" action="">
+                    <form className="col-md-6 col-md-offset-3" action="">
+                        <label htmlFor="addUsuarioReg">Usuario</label>
+                        <input className="form-control" type="text" id="addUsernameReg" name="username" onChange={this.handleChangeReg} required placeholder="Ingrese un usuario"/>
+                        <br></br>
+                        <div className="row">
+                            <div className="col-md-12 col-md-offset-3" >
+                            <label htmlFor="addPasswordReg">Contraseña</label>
+                                <input className="form-control" type="text" id="addPasswordReg" name="password" onChange={this.handleChangeReg} required placeholder="Ingrese la contraseña asociada"/>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12 col-md-offset-3" >
+                            <label htmlFor="addDocumentoReg">Documento</label>
+                                <input className="form-control" type="text" id="addDocumentoReg" name="documento" onChange={this.handleChangeReg} required placeholder="Ingrese su documento"/>
+                            </div>
+                        </div>
+                        <br></br><br></br>
+                        <div className="row">
+                            <div className="col-md-6 col-md-offset-3">
+                            <Button variant="primary" onClick={this.handleSubmitReg}>Registrar</Button>
+                            </div>
+                        </div>
+                    </form>
+                    </form>
+                </div>
             </div>
         );
     }
